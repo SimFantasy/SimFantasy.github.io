@@ -1,0 +1,6 @@
+http://example.com/2022/03/21/hello-world/
+http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/
+http://example.com/about/me.html
+http://example.com/
+http://example.com/tags/hexo/
+http://example.com/categories/%E5%BC%80%E5%8F%91/

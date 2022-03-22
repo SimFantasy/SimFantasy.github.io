@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sim&#39;s Blog</title>
+  
+  <subtitle>永远相信美好的事情即将发生</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2022-03-22T10:07:47.952Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Sim</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从0开始搭建Hexo博客</title>
+    <link href="http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</id>
+    <published>2022-03-22T09:54:31.000Z</published>
+    <updated>2022-03-22T10:07:47.952Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文记录本人搭建Hexo博客的全流程。</p><p>开始学会终端，加上点前端知识会让上手更加快捷。</p><span id="more"></span><h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2><p>你需要准备好以下软件：<br />Node.js<br />Git</p><h2 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo -g</span><br></pre></td></tr></table></figure><h2 id="升级"><a class="markdownIt-Anchor" href="#升级"></a> 升级</h2><p>更新hexo到最新版本</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo -g</span><br></pre></td></tr></table></figure><h2 id="初始化"><a class="markdownIt-Anchor" href="#初始化"></a> 初始化</h2><p>如果指定文件夹，则会在当前文件夹下创建指定文件夹<br />进入创建的文件夹<br />在指定文件夹中创建所需文件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm i</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;本文记录本人搭建Hexo博客的全流程。&lt;/p&gt;
+&lt;p&gt;开始学会终端，加上点前端知识会让上手更加快捷。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="http://example.com/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2022/03/21/hello-world/"/>
+    <id>http://example.com/2022/03/21/hello-world/</id>
+    <published>2022-03-21T08:38:46.567Z</published>
+    <updated>2022-03-22T10:14:04.083Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误，请重试" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="0faab2c551384445289797bf178116afaadfbb9c78a534313b6910755b302eaa">4630436162ade97ba2718b7d0c4b3b63f97fe7f487088031e1ec7f30c37889e17af4f6297068ec459b8609dd5e773f884c55009995b4e2fa14cd0ad5eff0ada9f9fb8fb348a39322f64a27b4e67198e9d0918355853825b4a8b859e1b0997d0838db13d93eb663a75abf26151a4cd6693bc3399e41eef6d4a0d8ac518bee9c9ddee4d733ecfde4f1c7c01610b2139c3f919d321e3580e4ea4d25333a1eb6a757138158c91746eb650d2bd292b639e6c34cbf144f87d98390fac9f8662146f06c3a6438c2b9ee94e1d311e783b3870047c72629be8369de61aafcfd95d1a6b146908a00176e823191858046b0d3068b0efa543f002c4411ac17d84cfbc5419db7d33e0dec60d5febc26877845ea4a0c78edbec57ec484cb94f4a5981b779247299a083552613550cf2067f03e18806e1d8b7363322598e505c747f93d1e38576db45e8de5d1770b452a4fb1219a730e7968e9f6fbb48dd64088b4f6b768d41ae0fde1188c840a5b26f4bcf87fc459371861bccf009fd56466bfb6189998e9e6a70ba3621ca8bdf949e5cadcc118f51f1285e700fe9e7e6b557a1dd209d48a1d0cbb009051daa698734920b51a1aa78f68846c9193837c920f1d316fe821f3d66603abb80dedbf3c157a69e54dea7865f8b42699a74a1ab35ae75af558b1752fb02dc4725b88410af15f79ed2c8956f5c23bdc1f72f9d92db20eec784da3b47bda9742066e178472e6bc95a90a2296892181b788a7b5541603afd9bfeb4ff390f3e420ffcf18a66ab65145660816105cc51cf0d51b7d52f82f37fa56a1e458136c39b0f051653b2a1ac4fa5007007e5b9c15306777bdfdc72d4b08d3ca8aa360018a0433e8e2bd50e258db8f7c8fc1d7124afe60e5aa4ff994c2ad0f9a1b8c0ca725c862c111428e457c515b4b209a9e55d23f2cb84dff9f497c27b1209c18b14d243a72a0a15c47e4e9fb1e88e4825821b17c0e13a001dbd3589212712f3ff6ab5e05fde58a28f37af753a1520a2664339c06f95c4e68487f459baa4e582685661069c62d98cab3ffae1320aa011bceacdb3adcfc997934c55258d8a28ab44b38f1917bc71a6f702f112b6d7e45db49b40e9bfe1be29ba07b6c86c6934bbd8004fba19cc44c05f75deae6ef4db28dfd9f7fa1040fed58d89defe5b1b3fd9a08305f19a2064ef0b65477f83d0a0e85c8cf7ba624a15d883a2742ac5de581c4e93cadf1ff51178c2f7a0edc5aebc867f2fcfc8a2ba9d1fd8a6329f80f0619831e79d064f4922048663f34de14198b8b1acb9a914b17f74f68f9f9effe8e20ee4e5647749be1008b7e58cb582fbac562740fd9f2e8b86402f34828f59662bb18daf995092cf22f6f82810df215896e82efb5db83eafde9429dbb78df5fd20b749e85ed14a166773344adb215e9a2e3ef271e601ee964d6e85f4a3f5aea95ddff83e1d613579b9bbb64b4d6ba348048af44b09e94c1a7183b8c22e32484f60d2b245ffe0d23c5ef2579707b4b1a6df581eac187364edfde67f55a64c982b6a66f9dc193888d6c8dfcadc2d9b86d634adf4f6487afff5fa9a47c99b07f6e399647c07d95d0b3b867070fc53abb416ad84ea95148549adc2f1b9f1f68d15b5c0d3037c8721e07cd7ef0adebb520b828a320d23eac2fdb044ea5eb6e1d974e17bbc378c95fb813da35c2e7da64638f823724e210b3a25c04a7e0beb5011066c4bc1853f9bc2bfe5d691c5cb854502e125d6a8e0cbe0cb9a47785e86197b6b365e7fba28b113dab7897823d392ed47690979bc012ee2dbd343cc92840d82ab0060cc8dde1c667d79ed7d3200875479d640957bf1fe018d3ac987cc1f86141ece385673cdfd47ca9394bd157b9bb9628ad8d8c5cc2f32930b6132aeb339d069568e7c4d6912902bb40f89a565c6d05ef50cea4ff540d1ba615ba4c28a282aa27123aca918643025d13edf2f4489028b383cf6f904624517cc36d714455da8780eb4d003d1f70d6c2402d0670ae09fafbcdad5cb841564e77a497fc9c4970921c43a95e3c6bb85decd2d2032b985b985063aa64621b74118e444b5e94ddb33c585338f7bc52608f0e60738b559b7cce57ede754db5b53d03a3b3b4f0fe43f70eba39083741fd73745e344a17eb6cec1eaea293b357e431b5a8665bf09448df812d978b5198698c29b671e9618af6bd91fbcc6fb1382c9fc916a0d7714bfb999bcfc4b5215e81a216041c8f8ddd63cc6b50abe3c15ec16ed279526e7d3908922cc53bb9a5625ce210d5fbe82d7616b4f8da1cab7a471f74eaa1161774088dcc43ebc5995b466fa490c7cee3a45a6d239fd99224471d33cde85542e1f02c3423e97bbae923396569e1f051767d49418074eef92df092524b995f806fb4b721e67325a023086bb7c6ac643da142ea428dd29195fd6ca5a3cf4b79793a81e35cd2fe6f2878ecd8fec4e490d2dc0686dc61b4e519c4b502b71a8be3dc19a372addad11f924d2334fce3b8f406c8ac53da1e0cd2d15ea0d218e835471a538af45d0f5cd349a94a83ce1f4e23a6e778085576d9600064a3c5515f5ca08e24fa6a937aa21cf9e9f5af33fb6ef98bd921c72dc39ffc19516c75ac476f3d97a6d288d32834dfed9ca927646441f34374a760bdb1c2881969b16f483eee5519d11d5858b9e166d6ee3af516d36a288c5d3322e0860a888f69e8c449ae6dddbae4ae423ed44d6c91d2eb348ccd7e9d5f5c82abde271389dd92daedd823259029981e71652c0644b148cdcc9272472585dd54c08be5fab4e809ecd2f11e0277ec6d89711585af792099f05cdd4d9841857f3c851c708ba826755333d584884ed6de0ac7a520bb3329502d67718eda925d5f42b7ebdcc8925588bb64f48b8abc2a0b6cf46f7432868e1f755079a39f4124f7bef23a36b8a86290552621cf51bebdcd9e9b5a76b2589834d9321207bac33a52a95cabc036cc431284e15fcc9f6e1910fbc879ab45275238671bfb3fa45a793425b3a090071fdb4fc4b0099f3ee8e77752f74aa9cbea4737f78bf</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <summary type="html">加密内容，请输入密码以继续查看</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>
