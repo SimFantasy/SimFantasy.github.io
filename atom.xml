@@ -39,7 +39,7 @@
     <link href="http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/"/>
     <id>http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</id>
     <published>2022-03-22T09:54:31.000Z</published>
-    <updated>2022-03-22T10:07:47.952Z</updated>
+    <updated>2022-03-23T05:46:03.584Z</updated>
     
     <content type="html"><![CDATA[<p>本文记录本人搭建Hexo博客的全流程。</p><p>开始学会终端，加上点前端知识会让上手更加快捷。</p><span id="more"></span><h2 id="准备"><a class="markdownIt-Anchor" href="#准备"></a> 准备</h2><p>你需要准备好以下软件：<br />Node.js<br />Git</p><h2 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo -g</span><br></pre></td></tr></table></figure><h2 id="升级"><a class="markdownIt-Anchor" href="#升级"></a> 升级</h2><p>更新hexo到最新版本</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo -g</span><br></pre></td></tr></table></figure><h2 id="初始化"><a class="markdownIt-Anchor" href="#初始化"></a> 初始化</h2><p>如果指定文件夹，则会在当前文件夹下创建指定文件夹<br />进入创建的文件夹<br />在指定文件夹中创建所需文件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm i</span><br></pre></td></tr></table></figure>]]></content>
     
