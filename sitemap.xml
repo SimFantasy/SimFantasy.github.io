@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2022-03-23</lastmod>
     
@@ -11,25 +11,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2022/03/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</loc>
-    
-    <lastmod>2022-03-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/2022/03/21/hello-world/</loc>
-    
-    <lastmod>2022-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://simfantasy.github.io/about/index.html</loc>
     
     <lastmod>2022-03-21</lastmod>
     
@@ -39,7 +21,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://simfantasy.github.io/</loc>
     <lastmod>2022-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -47,7 +29,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/hexo/</loc>
+    <loc>https://simfantasy.github.io/tags/hexo/</loc>
     <lastmod>2022-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -56,7 +38,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://simfantasy.github.io/categories/%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2022-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
