@@ -6,7 +6,7 @@
   <link href="https://simfantasy.github.io/atom.xml" rel="self"/>
   
   <link href="https://simfantasy.github.io/"/>
-  <updated>2022-03-23T17:10:00.808Z</updated>
+  <updated>2022-04-06T06:52:34.946Z</updated>
   <id>https://simfantasy.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Electron无法正常启动问题记录</title>
+    <link href="https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
+    <published>2022-04-06T06:37:12.000Z</published>
+    <updated>2022-04-06T06:52:34.946Z</updated>
+    
+    <content type="html"><![CDATA[<p>周末折腾了一下Electron，出现了<code>Electron 无法正确安装，请删除 node_modules/electron 并尝试再次安装</code>这样的错误，查了很多资料。</p><p>恰巧中午看到了一个帖子，按照步骤基本解决启动问题了。</p><p>步骤如下：</p><ol><li>先到<code>usr/local/lib/node_modules</code>中删除Electron的文件夹</li><li>然后使用官方npm安装好全局electron <code>npm i electron@latest -g</code></li><li>然后进入到到<code>usr/local/lib/node_modules/Electron</code>文件夹中，打开终端运行<code>node instatll.js</code></li><li>查看下chrome的版本，按官方升级到对应版以上</li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -D electron@latest</span><br><span class="line"># <span class="title class_">Electron</span><span class="number">18.0</span><span class="number">.1</span></span><br><span class="line"># <span class="title class_">Node</span><span class="number">16.13</span><span class="number">.2</span></span><br><span class="line">#<span class="title class_">Chromium</span> <span class="number">100.0</span><span class="number">.4896</span><span class="number">.60</span></span><br></pre></td></tr></table></figure><ol start="5"><li>然后再次启动就可以了成功了。</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;周末折腾了一下Electron，出现了&lt;code&gt;Electron 无法正确安装，请删除 node_modules/electron 并尝试再次安装&lt;/code&gt;这样的错误，查了很多资料。&lt;/p&gt;
+&lt;p&gt;恰巧中午看到了一个帖子，按照步骤基本解决启动问题了。&lt;/p&gt;
+&lt;p&gt;步</summary>
+      
+    
+    
+    
+    <category term="开发" scheme="https://simfantasy.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="electron" scheme="https://simfantasy.github.io/tags/electron/"/>
+    
+  </entry>
   
   <entry>
     <title>从0开始搭建Hexo博客</title>
