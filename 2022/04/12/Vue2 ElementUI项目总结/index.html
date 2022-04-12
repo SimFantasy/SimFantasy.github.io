@@ -1,9 +1,342 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>UI项目总结 | Sim's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 6.1.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">UI项目总结</h1><a id="logo" href="/.">Sim's Blog</a><p class="description">永远相信美好的事情即将发生</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">UI项目总结</h1><div class="post-meta">2022-04-12<span> | </span><span class="category"><a href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="clear"><div class="toc-article" id="toc"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3mainjs"><span class="toc-number">1.</span> <span class="toc-text"> 入口：main.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1routerjs"><span class="toc-number">2.</span> <span class="toc-text"> 路由：router.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#appvue"><span class="toc-number">3.</span> <span class="toc-text"> App.vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#homevue"><span class="toc-number">4.</span> <span class="toc-text"> Home.vue</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template"><span class="toc-number">4.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script"><span class="toc-number">4.2.</span> <span class="toc-text"> Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css"><span class="toc-number">4.3.</span> <span class="toc-text"> Css</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE-list"><span class="toc-number">5.</span> <span class="toc-text"> 列表获取数据 List</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-2"><span class="toc-number">5.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-2"><span class="toc-number">5.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%B9%E5%B1%82-add"><span class="toc-number">6.</span> <span class="toc-text"> 添加弹层 Add</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-3"><span class="toc-number">6.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-3"><span class="toc-number">6.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%BC%B9%E5%B1%82-edit"><span class="toc-number">7.</span> <span class="toc-text"> 编辑弹层 Edit</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-4"><span class="toc-number">7.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-4"><span class="toc-number">7.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-delete"><span class="toc-number">8.</span> <span class="toc-text"> 删除 Delete</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#script-5"><span class="toc-number">8.1.</span> <span class="toc-text"> Script</span></a></li></ol></li></ol></div></div><div class="post-content"><p>近一个月的Vue2 ElementUI 电商后台项目的总结。</p>
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>UI项目总结 | Sim Fantasy</title>
+  <meta name="description" content="近一个月的Vue2 ElementUI 电商后台项目的总结。  Vue2 的写法太累，data、mehtods都卸写在一起，除了用注释标记区分，结构上很是繁琐。vue3这块的Components API解决了这块的问题，期待后面要开始Vue3的项目 Vue东西还是很简单，主要还是需要项目来练习。 黑马的学习视频还是不行，每次都直接把代码贴出来，念一遍，很多关联概念不解释，只说是固定写法。尚硅谷的张">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UI项目总结">
+<meta property="og:url" content="https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Sim&#39;s Blog">
+<meta property="og:description" content="近一个月的Vue2 ElementUI 电商后台项目的总结。  Vue2 的写法太累，data、mehtods都卸写在一起，除了用注释标记区分，结构上很是繁琐。vue3这块的Components API解决了这块的问题，期待后面要开始Vue3的项目 Vue东西还是很简单，主要还是需要项目来练习。 黑马的学习视频还是不行，每次都直接把代码贴出来，念一遍，很多关联概念不解释，只说是固定写法。尚硅谷的张">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-12T03:45:06.000Z">
+<meta property="article:modified_time" content="2022-04-12T04:05:01.662Z">
+<meta property="article:author" content="Sim">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="ElementUI">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Sim&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/SimFantasy" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Sim</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">PM &amp; UI &amp; Coder</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Changsha, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>记录学习和资料!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/electron/" rel="tag">electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ElementUI/" style="font-size: 13px;">ElementUI</a> <a href="/tags/electron/" style="font-size: 13px;">electron</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/vue/" style="font-size: 13px;">vue</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="title">UI项目总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-12T03:45:06.000Z" itemprop="datePublished">2022-04-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="title">Electron无法正常启动问题记录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-06T06:37:12.000Z" itemprop="datePublished">2022-04-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" class="title">从0开始搭建Hexo博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-03-22T09:54:31.000Z" itemprop="datePublished">2022-03-22</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3mainjs"><span class="toc-number">1.</span> <span class="toc-text"> 入口：main.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1routerjs"><span class="toc-number">2.</span> <span class="toc-text"> 路由：router.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#appvue"><span class="toc-number">3.</span> <span class="toc-text"> App.vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#homevue"><span class="toc-number">4.</span> <span class="toc-text"> Home.vue</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template"><span class="toc-number">4.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script"><span class="toc-number">4.2.</span> <span class="toc-text"> Script</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css"><span class="toc-number">4.3.</span> <span class="toc-text"> Css</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE-list"><span class="toc-number">5.</span> <span class="toc-text"> 列表获取数据 List</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-2"><span class="toc-number">5.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-2"><span class="toc-number">5.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%B9%E5%B1%82-add"><span class="toc-number">6.</span> <span class="toc-text"> 添加弹层 Add</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-3"><span class="toc-number">6.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-3"><span class="toc-number">6.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%BC%B9%E5%B1%82-edit"><span class="toc-number">7.</span> <span class="toc-text"> 编辑弹层 Edit</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#template-4"><span class="toc-number">7.1.</span> <span class="toc-text"> Template</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-4"><span class="toc-number">7.2.</span> <span class="toc-text"> Script</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-delete"><span class="toc-number">8.</span> <span class="toc-text"> 删除 Delete</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#script-5"><span class="toc-number">8.1.</span> <span class="toc-text"> Script</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Vue2 ElementUI项目总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UI项目总结
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="article-date">
+	  <time datetime="2022-04-12T03:45:06.000Z" itemprop="datePublished">2022-04-12</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/ElementUI/" rel="tag">ElementUI</a>, <a class="article-tag-link-link" href="/tags/vue/" rel="tag">vue</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>近一个月的Vue2 ElementUI 电商后台项目的总结。</p>
 <ol>
 <li>Vue2 的写法太累，data、mehtods都卸写在一起，除了用注释标记区分，结构上很是繁琐。vue3这块的Components API解决了这块的问题，期待后面要开始Vue3的项目</li>
 <li>Vue东西还是很简单，主要还是需要项目来练习。</li>
 <li>黑马的学习视频还是不行，每次都直接把代码贴出来，念一遍，很多关联概念不解释，只说是固定写法。尚硅谷的张天禹的好太多，就是需要去跟着他的内容去理解，掰得太碎。</li>
 </ol>
+<span id="more"></span>
 <p>以下为本次项目基础总结，入口、框架、增删改查都涉及到了。</p>
 <h3 id="入口mainjs"><a class="markdownIt-Anchor" href="#入口mainjs"></a> 入口：main.js</h3>
 <p>基础组件、样式、第三方插件引入。</p>
@@ -45,4 +378,171 @@
 <h3 id="删除-delete"><a class="markdownIt-Anchor" href="#删除-delete"></a> 删除 Delete</h3>
 <h4 id="script-5"><a class="markdownIt-Anchor" href="#script-5"></a> Script</h4>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="comment">// 删除数据事件，需将数据id传过来</span></span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">delUserById</span>(<span class="params">uid</span>)&#123;</span><br><span class="line">      <span class="comment">// 点击删除按钮后，弹出二次确认弹层</span></span><br><span class="line">      <span class="keyword">const</span> confirmResult = <span class="keyword">await</span> <span class="variable language_">this</span>.$confirm(<span class="string">&#x27;此操作将永久删除该用户, 是否继续?&#x27;</span>, <span class="string">&#x27;提示&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">confirmButtonText</span>: <span class="string">&#x27;删除&#x27;</span>,</span><br><span class="line">        <span class="attr">cancelButtonText</span>: <span class="string">&#x27;取消&#x27;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;danger&#x27;</span></span><br><span class="line">      &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> err)</span><br><span class="line">      <span class="comment">// 点击删除按钮，进行确认判断，如果不为删除，则取消删除事件</span></span><br><span class="line">      <span class="keyword">if</span> (confirmResult !== <span class="string">&#x27;confirm&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">info</span>(<span class="string">&#x27;已取消删除&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 如判断为删除，则进行删除请求将id传给服务端</span></span><br><span class="line">      <span class="keyword">const</span> &#123; <span class="attr">data</span>: res &#125; = <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">delete</span>(<span class="string">`users/<span class="subst">$&#123;uid&#125;</span>`</span>)</span><br><span class="line">      <span class="keyword">if</span> (res.<span class="property">meta</span>.<span class="property">status</span> !== <span class="number">200</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">error</span>(<span class="string">&#x27;删除用户失败&#x27;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">$message</span>.<span class="title function_">success</span>(<span class="string">&#x27;用户删除成功&#x27;</span>)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">getUserList</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>UI项目总结</p><p><span>文章作者：</span>sim</p><p><span>发布时间：</span>2022-04-12</p><p><span>最后更新：</span>2022-04-12</p><p><span>原始链接：</span><a href="/2022/04/12/Vue2 ElementUI项目总结/">https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"></i></span></p><p><span>版权声明：</span>copyright to sim</p></div><br><div class="tags"><a href="/tags/vue/"><i class="fa fa-tag"></i>vue</a><a href="/tags/ElementUI/"><i class="fa fa-tag"></i>ElementUI</a></div><div class="post-nav"><a class="next" href="/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">Electron无法正常启动问题记录</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://simfantasy.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">3</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/electron/" style="font-size: 15px;">electron</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/ElementUI/" style="font-size: 15px;">ElementUI</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">UI项目总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">Electron无法正常启动问题记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">从0开始搭建Hexo博客</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">Sim's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="UI项目总结" target="_blank" rel="external">https://simfantasy.github.io/2022/04/12/Vue2 ElementUI项目总结/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/SimFantasy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpeg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/SimFantasy" target="_blank"><span class="text-dark">Sim</span><small class="ml-1x">PM &amp; UI &amp; Coder</small></a></h3>
+        <div>Stay hungry, stay foolish ~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" title="Electron无法正常启动问题记录"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '8evVvpq9xtr4388bjiEtNaWo-gzGzoHsz',
+    appKey: 'zcu23sgYsodczmtTdIED8YP1',
+    placeholder: '说点什么吧~',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
