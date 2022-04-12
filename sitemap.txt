@@ -1,7 +1,10 @@
-https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/
+https://simfantasy.github.io/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/
 https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/
+https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/
 https://simfantasy.github.io/about/index.html
 https://simfantasy.github.io/
-https://simfantasy.github.io/tags/hexo/
 https://simfantasy.github.io/tags/electron/
+https://simfantasy.github.io/tags/vue/
+https://simfantasy.github.io/tags/ElementUI/
+https://simfantasy.github.io/tags/hexo/
 https://simfantasy.github.io/categories/%E5%BC%80%E5%8F%91/
