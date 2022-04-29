@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>JavaScript字符串操作整理 | Sim Fantasy</title>
+  <meta name="description" content="基础差就只能慢慢补，这两天把字符串操作的方法整理了下，平常用的也就只有几个，但是一整理就发现有一大堆。 常用indexOf()、split()、slice()、toLowerCase()、toUpperCase()、replace()、trim()、padStart()、parseInt()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript字符串操作整理">
+<meta property="og:url" content="https://simfantasy.github.io/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Sim&#39;s Blog">
+<meta property="og:description" content="基础差就只能慢慢补，这两天把字符串操作的方法整理了下，平常用的也就只有几个，但是一整理就发现有一大堆。 常用indexOf()、split()、slice()、toLowerCase()、toUpperCase()、replace()、trim()、padStart()、parseInt()">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-29T07:36:54.000Z">
+<meta property="article:modified_time" content="2022-04-29T07:47:48.831Z">
+<meta property="article:author" content="Sim">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="字符串操作">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://simfantasy.github.io/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Sim&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/SimFantasy" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Sim</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">PM &amp; UI &amp; Coder</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Changsha, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>记录学习和资料!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESLint/" rel="tag">ESLint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElementUI/" rel="tag">ElementUI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Prettier/" rel="tag">Prettier</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/electron/" rel="tag">electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" rel="tag">字符串操作</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/ESLint/" style="font-size: 13px;">ESLint</a> <a href="/tags/ElementUI/" style="font-size: 13px;">ElementUI</a> <a href="/tags/Prettier/" style="font-size: 13px;">Prettier</a> <a href="/tags/css/" style="font-size: 13px;">css</a> <a href="/tags/electron/" style="font-size: 13px;">electron</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/javascript/" style="font-size: 13px;">javascript</a> <a href="/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" style="font-size: 13px;">字符串操作</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/JavaScript/">JavaScript</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" class="title">JavaScript字符串操作整理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-29T07:36:54.000Z" itemprop="datePublished">2022-04-29</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/18/CSS%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E5%AE%8C%E5%85%A8%E4%BD%93/" class="title">CSS垂直居中的完全体</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-17T16:58:31.000Z" itemprop="datePublished">2022-04-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/15/VSCode%E4%BD%BF%E7%94%A8Prettier%E6%8C%89ESLint%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/" class="title">VSCode使用Prettier按ESLint格式化代码</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-15T10:38:41.000Z" itemprop="datePublished">2022-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/12/Vue2%20ElementUI%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="title">Vue2.x ElementUI项目总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-12T03:45:06.000Z" itemprop="datePublished">2022-04-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="title">Electron无法正常启动问题记录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-04-06T06:37:12.000Z" itemprop="datePublished">2022-04-06</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text"> 获取字符串长度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6-length"><span class="toc-number">1.1.</span> <span class="toc-text"> 获取字符串长度 length</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text"> 获取字符串指定位置的值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%AD%97%E7%AC%A6-charat"><span class="toc-number">2.1.</span> <span class="toc-text"> 获取指定位置的字符 charAt()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84uniconde%E5%80%BC-charcodeat"><span class="toc-number">2.2.</span> <span class="toc-text"> 获取指定位置的Uniconde值 charCodeAt()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E7%89%B9%E5%AE%9A%E5%BA%8F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text"> 检索字符串是否包含特定序列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6-indexof"><span class="toc-number">3.1.</span> <span class="toc-text"> 查找某个字符 IndexOf()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6-lastindexof"><span class="toc-number">3.2.</span> <span class="toc-text"> 查找某个字符 lastIndexOf()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2-includes"><span class="toc-number">3.3.</span> <span class="toc-text"> 判断字符串是否包含指定子字符串 includes()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E4%BB%A5%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A7%8B-startswith"><span class="toc-number">3.4.</span> <span class="toc-text"> 检测字符串是否以指定的子字符串开始 startsWith()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E4%BB%A5%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E5%B0%BE-endswith"><span class="toc-number">3.5.</span> <span class="toc-text"> 检测字符串是否以指定的字符串结尾 endsWith()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text"> 连接多个字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E4%B8%A4%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2-concat"><span class="toc-number">4.1.</span> <span class="toc-text"> 连接两个或多个字符串 concat()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2%E6%88%90%E6%95%B0%E7%BB%84"><span class="toc-number">5.</span> <span class="toc-text"> 字符串分割成数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84-split"><span class="toc-number">5.1.</span> <span class="toc-text"> 字符串分割成字符串数组 split()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">6.</span> <span class="toc-text"> 截取字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9F%90%E4%B8%AA%E9%83%A8%E5%88%86-slice"><span class="toc-number">6.1.</span> <span class="toc-text"> 提取字符串某个部分 slice(）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E4%B8%A4%E4%B8%AA%E6%8C%87%E5%AE%9A%E4%B8%8B%E6%A0%87%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9A%84%E5%AD%97%E7%AC%A6-substring"><span class="toc-number">6.2.</span> <span class="toc-text"> 提取两个指定下标之间的的字符 substring()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-number">7.</span> <span class="toc-text"> 字符串大小写转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99-tolowercase"><span class="toc-number">7.1.</span> <span class="toc-text"> 把字符串转换为小写 toLowerCase()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%A4%A7%E5%86%99-touppercase"><span class="toc-number">7.2.</span> <span class="toc-text"> 把字符串转换为大写 toUpperCase()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.</span> <span class="toc-text"> 字符串匹配模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6-replace"><span class="toc-number">8.1.</span> <span class="toc-text"> 替换字符 replace()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2-match"><span class="toc-number">8.2.</span> <span class="toc-text"> 匹配字符串 match()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E5%AD%97%E7%AC%A6%E4%B8%B2-search"><span class="toc-number">8.3.</span> <span class="toc-text"> 检索字符串 search()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-number">9.</span> <span class="toc-text"> 移除字符串中的空白字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E9%A6%96%E5%B0%BE%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6-trim"><span class="toc-number">9.1.</span> <span class="toc-text"> 移除首尾空白字符 trim()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%BC%80%E5%A4%B4%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6-trimstart"><span class="toc-number">9.2.</span> <span class="toc-text"> 移除开头的空白字符 trimStart()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E7%BB%93%E5%B0%BE%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6-trimend"><span class="toc-number">9.3.</span> <span class="toc-text"> 移除结尾的空白字符 trimEnd()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%AC%E8%BA%AB"><span class="toc-number">10.</span> <span class="toc-text"> 获取字符串本身</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%80%BC-valueof"><span class="toc-number">10.1.</span> <span class="toc-text"> 返回字符串的原始值 valueOf()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B-tostring"><span class="toc-number">10.2.</span> <span class="toc-text"> 转换成字符串类型 tostring()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">11.</span> <span class="toc-text"> 重复字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2-repeat"><span class="toc-number">11.1.</span> <span class="toc-text"> 重复字符串 repeat()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E9%BD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-number">12.</span> <span class="toc-text"> 补齐字符串长度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E9%BD%90%E5%A4%B4%E9%83%A8%E5%AD%97%E7%AC%A6%E4%B8%B2-padstart"><span class="toc-number">12.1.</span> <span class="toc-text"> 补齐头部字符串 padStart()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E9%BD%90%E5%B0%BE%E9%83%A8%E5%AD%97%E7%AC%A6%E4%B8%B2-padend"><span class="toc-number">12.2.</span> <span class="toc-text"> 补齐尾部字符串 padEnd()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B0%E5%AD%97"><span class="toc-number">13.</span> <span class="toc-text"> 字符串转为数字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B4%E6%95%B0-parseint"><span class="toc-number">13.1.</span> <span class="toc-text"> 字符串转为整数 parseInt()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%B5%AE%E7%82%B9%E6%95%B0-parsefloat"><span class="toc-number">13.2.</span> <span class="toc-text"> 字符串转为浮点数 parseFloat()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%A6%82%E8%A7%88"><span class="toc-number">14.</span> <span class="toc-text"> 快速概览</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JavaScript字符串操作整理" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript字符串操作整理
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" class="article-date">
+	  <time datetime="2022-04-29T07:36:54.000Z" itemprop="datePublished">2022-04-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>, <a class="article-tag-link-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" rel="tag">字符串操作</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.8k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>基础差就只能慢慢补，这两天把字符串操作的方法整理了下，平常用的也就只有几个，但是一整理就发现有一大堆。</p>
+<p>常用<code>indexOf()</code>、<code>split()</code>、<code>slice()</code>、<code>toLowerCase()</code>、<code>toUpperCase()</code>、<code>replace()</code>、<code>trim()</code>、<code>padStart()</code>、<code>parseInt()</code></p>
+<span id="more"></span>
+<h2 id="获取字符串长度"><a class="markdownIt-Anchor" href="#获取字符串长度"></a> 获取字符串长度</h2>
+<h3 id="获取字符串长度-length"><a class="markdownIt-Anchor" href="#获取字符串长度-length"></a> 获取字符串长度 length</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="property">length</span> <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取字符串指定位置的值"><a class="markdownIt-Anchor" href="#获取字符串指定位置的值"></a> 获取字符串指定位置的值</h2>
+<h3 id="获取指定位置的字符-charat"><a class="markdownIt-Anchor" href="#获取指定位置的字符-charat"></a> 获取指定位置的字符 charAt()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">charAt</span>(<span class="number">1</span>) <span class="comment">// e</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取指定位置的uniconde值-charcodeat"><a class="markdownIt-Anchor" href="#获取指定位置的uniconde值-charcodeat"></a> 获取指定位置的Uniconde值 charCodeAt()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">charCodeAt</span>(<span class="number">1</span>) <span class="comment">// 117</span></span><br></pre></td></tr></table></figure>
+<h2 id="检索字符串是否包含特定序列"><a class="markdownIt-Anchor" href="#检索字符串是否包含特定序列"></a> 检索字符串是否包含特定序列</h2>
+<h3 id="查找某个字符-indexof"><a class="markdownIt-Anchor" href="#查找某个字符-indexof"></a> 查找某个字符 IndexOf()</h3>
+<p>有则返回第一次匹配到的索引位置<code>index</code>，否则返回<code>-1</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">indexOf</span>(<span class="string">&#x27;l&#x27;</span>) <span class="comment">// 2</span></span><br><span class="line">str.<span class="title function_">indexOf</span>(<span class="string">&#x27;x&#x27;</span>) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<h3 id="查找某个字符-lastindexof"><a class="markdownIt-Anchor" href="#查找某个字符-lastindexof"></a> 查找某个字符 lastIndexOf()</h3>
+<p>有则返回最后匹配到的索引位置<code>index</code>  ，否则返回<code>-1</code>  。只是查找的顺序不一样，indexOf()是正序查找，lastIndexOf()是逆序查找。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;l&#x27;</span>) <span class="comment">// 8</span></span><br><span class="line">str.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;y&#x27;</span>) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<h3 id="判断字符串是否包含指定子字符串-includes"><a class="markdownIt-Anchor" href="#判断字符串是否包含指定子字符串-includes"></a> 判断字符串是否包含指定子字符串 includes()</h3>
+<p>如找到匹配字符串返回<code>true</code>否则返回<code>false</code> 。</p>
+<p><strong>参数：</strong></p>
+<p><code>searchvalue</code>，必须，要查找的字符串。</p>
+<p><code>start</code>，开始查找位置，默认为0。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">includes</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">str.<span class="title function_">includes</span>(<span class="string">&#x27;x&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">str.<span class="title function_">includes</span>(<span class="string">&#x27;e&#x27;</span>, <span class="number">2</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="检测字符串是否以指定的子字符串开始-startswith"><a class="markdownIt-Anchor" href="#检测字符串是否以指定的子字符串开始-startswith"></a> 检测字符串是否以指定的子字符串开始 startsWith()</h3>
+<p>如以指定子字符串开始返回<code>true</code>，否则返回<code>false</code>  。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">startsWith</span>(<span class="string">&#x27;He&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">str.<span class="title function_">startsWith</span>(<span class="string">&#x27;he&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">str.<span class="title function_">startsWith</span>(<span class="string">&#x27;Wo&#x27;</span>, <span class="number">6</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="检测字符串是否以指定的字符串结尾-endswith"><a class="markdownIt-Anchor" href="#检测字符串是否以指定的字符串结尾-endswith"></a> 检测字符串是否以指定的字符串结尾 endsWith()</h3>
+<p>如以指定字符串结尾返回<code>true</code>，否则返回<code>false</code>。</p>
+<p><strong>参数：</strong></p>
+<p><code>searchvalue</code>，必须，要查询的字符串。</p>
+<p><code>length</code>，查询字符串的长度范围，默认为整个字符串长度范围内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">endsWith</span>(<span class="string">&#x27;ld&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">str.<span class="title function_">endsWith</span>(<span class="string">&#x27;ed&#x27;</span>) <span class="comment">// false</span></span><br><span class="line">str.<span class="title function_">endsWith</span>(<span class="string">&#x27;llo&#x27;</span>, <span class="number">5</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="连接多个字符串"><a class="markdownIt-Anchor" href="#连接多个字符串"></a> 连接多个字符串</h2>
+<h3 id="连接两个或多个字符串-concat"><a class="markdownIt-Anchor" href="#连接两个或多个字符串-concat"></a> 连接两个或多个字符串 concat()</h3>
+<p>不会改变原有字符串，会返回连接后的新的字串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">concat</span>(<span class="string">&#x27; Javascript&#x27;</span>) <span class="comment">// Hello World Javascript</span></span><br><span class="line">str.<span class="title function_">concat</span>(<span class="string">&#x27; Vue&#x27;</span>, <span class="string">&#x27; React&#x27;</span>) <span class="comment">// Hello World Vue React</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串分割成数组"><a class="markdownIt-Anchor" href="#字符串分割成数组"></a> 字符串分割成数组</h2>
+<h3 id="字符串分割成字符串数组-split"><a class="markdownIt-Anchor" href="#字符串分割成字符串数组-split"></a> 字符串分割成字符串数组 split()</h3>
+<p>不会改变原始字符串。</p>
+<p><strong>参数：</strong></p>
+<p><code>separator</code>，必须，字符串或正则表达式，从该参数指定的地方分割字符串。</p>
+<p><code>limit</code>，可选，指定返回数组中字符串长度。未设置该参数则整个字符串都会被分割。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// //[ &#x27;H&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;, &#x27; &#x27;, &#x27;W&#x27;, &#x27;o&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27; ]</span></span><br><span class="line">str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>, <span class="number">5</span>) <span class="comment">// [ &#x27;H&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27; ]</span></span><br><span class="line">str.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>) <span class="comment">// [&#x27;Hello&#x27;, &#x27;World&#x27;]</span></span><br></pre></td></tr></table></figure>
+<h2 id="截取字符串"><a class="markdownIt-Anchor" href="#截取字符串"></a> 截取字符串</h2>
+<h3 id="提取字符串某个部分-slice"><a class="markdownIt-Anchor" href="#提取字符串某个部分-slice"></a> 提取字符串某个部分 slice(）</h3>
+<p>以新的字符串返回被提取的部分。该方法返回的字符串：<code>包括开始处的字符，不包括结束处的字符</code> 。</p>
+<p><strong>参数：</strong></p>
+<p><code>start</code>，必须，要截取片段开始下标，第一个字符位置为0，如为负数，则从未必开始截取。</p>
+<p><code>end</code>，可选，要截取片段结尾下标。若未指定该参数，则从<code>start</code>到原始字符串结尾的字符串。若参数为负数，则从字符串尾部开始算起。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>) <span class="comment">// ello</span></span><br><span class="line">str.<span class="title function_">slice</span>(<span class="number">6</span>) <span class="comment">// World</span></span><br><span class="line">str.<span class="title function_">slice</span>() <span class="comment">// Hello World</span></span><br><span class="line">str.<span class="title function_">slice</span>(-<span class="number">2</span>) <span class="comment">// ld</span></span><br><span class="line">str.<span class="title function_">slice</span>(<span class="number">6</span>, <span class="number">1</span>) <span class="comment">// </span></span><br></pre></td></tr></table></figure>
+<h3 id="提取两个指定下标之间的的字符-substring"><a class="markdownIt-Anchor" href="#提取两个指定下标之间的的字符-substring"></a> 提取两个指定下标之间的的字符 substring()</h3>
+<p>MDN建议使用<code>substring()</code>替代<code>substr()</code>。   返回一个新的字符串。</p>
+<p><strong>参数：</strong></p>
+<p><code>from</code>，必须，非负整数，规定要提取子字符串的起始位置。</p>
+<p><code>to</code>，可选，非负整数，规定要提取子字符串的结束位置。如省略，则返回的字符串一直到字符串的结尾。</p>
+<p>注意：</p>
+<ol>
+<li>如from和to相等，那么返回一个空串。</li>
+<li>如from比to大，则会交换这两个参数，该方法不接受负数作为参数。</li>
+<li>该方法返回的字符串：<code>包括开始处的字符，不包括结束处的字符</code> 。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">substring</span>(<span class="number">0</span>, <span class="number">5</span>) <span class="comment">// Hello</span></span><br><span class="line">str.<span class="title function_">substring</span>(<span class="number">6</span>) <span class="comment">// World</span></span><br><span class="line">str.<span class="title function_">substring</span>() <span class="comment">// Hello World</span></span><br><span class="line">str.<span class="title function_">substring</span>(<span class="number">6</span>, <span class="number">0</span>) <span class="comment">// Hello</span></span><br><span class="line">str.<span class="title function_">substring</span>(-<span class="number">1</span>) <span class="comment">// Hello World</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串大小写转换"><a class="markdownIt-Anchor" href="#字符串大小写转换"></a> 字符串大小写转换</h2>
+<h3 id="把字符串转换为小写-tolowercase"><a class="markdownIt-Anchor" href="#把字符串转换为小写-tolowercase"></a> 把字符串转换为小写 toLowerCase()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">toLowerCase</span>() <span class="comment">// hello world</span></span><br><span class="line"><span class="comment">// 首字母变成小写</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str[<span class="number">0</span>].<span class="title function_">toLowerCase</span>() + str.<span class="title function_">substring</span>(<span class="number">1</span>)) <span class="comment">// hello World</span></span><br></pre></td></tr></table></figure>
+<h3 id="把字符串转换为大写-touppercase"><a class="markdownIt-Anchor" href="#把字符串转换为大写-touppercase"></a> 把字符串转换为大写 toUpperCase()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">toUpperCase</span>() <span class="comment">// HELLO WORLD</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串匹配模式"><a class="markdownIt-Anchor" href="#字符串匹配模式"></a> 字符串匹配模式</h2>
+<h3 id="替换字符-replace"><a class="markdownIt-Anchor" href="#替换字符-replace"></a> 替换字符 replace()</h3>
+<p><strong>参数：</strong></p>
+<p><code>searchvalue</code>，必须，规定子字符串或要替换的模式的RegExp对象。</p>
+<p><code>newvalue</code>，必须，字符串，规定了替换文本或生成文本的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">replace</span>(<span class="string">&#x27;World&#x27;</span>, <span class="string">&#x27;Javascript&#x27;</span>) <span class="comment">// Hello Javascript</span></span><br><span class="line">str.<span class="title function_">replace</span>(<span class="regexp">/world/gi</span>, <span class="string">&#x27;Vue&#x27;</span>) <span class="comment">// Hello Vue</span></span><br></pre></td></tr></table></figure>
+<h3 id="匹配字符串-match"><a class="markdownIt-Anchor" href="#匹配字符串-match"></a> 匹配字符串 match()</h3>
+<p>匹配字符串，查找到返回一个数组对象，数组对象里有 匹配的值 查找字符串的下标 和 原字符串内容，找不到返回null。</p>
+<p>该方法参数regexp是必须的，规定要匹配的模式的RegExp对象，如果不是RegExp对象，则需要先传递给RegExp构造函数，将其转换为RegExp对象。</p>
+<p>该方法返回存放匹配结果的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">match</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// [ &#x27;o&#x27;, index: 4, input: &#x27;Hello World&#x27;, groups: undefined ]</span></span><br><span class="line">str.<span class="title function_">match</span>(<span class="string">&#x27;f&#x27;</span>) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+<h3 id="检索字符串-search"><a class="markdownIt-Anchor" href="#检索字符串-search"></a> 检索字符串 search()</h3>
+<p>跟indexOf一样，查找字符串首次出现的位置，如果找到返回该字符串下标，下标从0开始，未找到返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">search</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// 4</span></span><br><span class="line">str.<span class="title function_">search</span>(<span class="string">&#x27;f&#x27;</span>) <span class="comment">// -1</span></span><br></pre></td></tr></table></figure>
+<h2 id="移除字符串中的空白字符"><a class="markdownIt-Anchor" href="#移除字符串中的空白字符"></a> 移除字符串中的空白字符</h2>
+<h3 id="移除首尾空白字符-trim"><a class="markdownIt-Anchor" href="#移除首尾空白字符-trim"></a> 移除首尾空白字符 trim()</h3>
+<p>不改变原字符串，返回一个新字符串。不适用于null、nudefined、Number类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;   Hello World   &#x27;</span></span><br><span class="line">str.<span class="title function_">trim</span>() <span class="comment">// Hello World</span></span><br></pre></td></tr></table></figure>
+<h3 id="移除开头的空白字符-trimstart"><a class="markdownIt-Anchor" href="#移除开头的空白字符-trimstart"></a> 移除开头的空白字符 trimStart()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27; Hello World &#x27;</span></span><br><span class="line">str.<span class="title function_">trimStart</span>() <span class="comment">// Hello World  </span></span><br></pre></td></tr></table></figure>
+<h3 id="移除结尾的空白字符-trimend"><a class="markdownIt-Anchor" href="#移除结尾的空白字符-trimend"></a> 移除结尾的空白字符 trimEnd()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27; Hello World &#x27;</span></span><br><span class="line">str.<span class="title function_">trimEnd</span>() <span class="comment">// Hello World</span></span><br></pre></td></tr></table></figure>
+<h2 id="获取字符串本身"><a class="markdownIt-Anchor" href="#获取字符串本身"></a> 获取字符串本身</h2>
+<h3 id="返回字符串的原始值-valueof"><a class="markdownIt-Anchor" href="#返回字符串的原始值-valueof"></a> 返回字符串的原始值 valueOf()</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">valueOf</span>() <span class="comment">// Hello World</span></span><br></pre></td></tr></table></figure>
+<h3 id="转换成字符串类型-tostring"><a class="markdownIt-Anchor" href="#转换成字符串类型-tostring"></a> 转换成字符串类型 tostring()</h3>
+<p>一般用于将数值、布尔值类型转换成字符串类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="number">123</span></span><br><span class="line">str.<span class="title function_">toString</span>() <span class="comment">// &quot;123&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="重复字符串"><a class="markdownIt-Anchor" href="#重复字符串"></a> 重复字符串</h2>
+<h3 id="重复字符串-repeat"><a class="markdownIt-Anchor" href="#重复字符串-repeat"></a> 重复字符串 repeat()</h3>
+<p>返回一个新字符串，重复n次。</p>
+<ol>
+<li>如参数为0、负小数、NaN、字符串，输出为空</li>
+<li>如为负数、infinity 会报错</li>
+<li>如为小数，会向下取整</li>
+<li>如果字符串会先转为数字</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">repeat</span>(<span class="number">2</span>) <span class="comment">// Hello WorldHello World</span></span><br><span class="line">str.<span class="title function_">repeat</span>(<span class="number">0</span>) <span class="comment">//</span></span><br><span class="line">str.<span class="title function_">repeat</span>(<span class="number">2.8</span>) <span class="comment">// Hello WorldHello World</span></span><br><span class="line">str.<span class="title function_">repeat</span>(-<span class="number">1</span>) <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+<h2 id="补齐字符串长度"><a class="markdownIt-Anchor" href="#补齐字符串长度"></a> 补齐字符串长度</h2>
+<h3 id="补齐头部字符串-padstart"><a class="markdownIt-Anchor" href="#补齐头部字符串-padstart"></a> 补齐头部字符串 padStart()</h3>
+<p>参数：</p>
+<p>参数1，必须，数字，字符串补齐后的长度。如原字符串长度等于或大于指定长度，则返回原字符串</p>
+<p>参数2，可选，字符，用来补全的字符串。如为空则用空格补全长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">padStart</span>(<span class="number">15</span>, <span class="string">&#x27;a&#x27;</span>) <span class="comment">// aaaaHello World</span></span><br><span class="line">str.<span class="title function_">padStart</span>(<span class="number">8</span>, <span class="string">&#x27;a&#x27;</span>) <span class="comment">// Hello World</span></span><br><span class="line">str.<span class="title function_">padStart</span>(<span class="number">15</span>)  <span class="comment">//    Hello World</span></span><br></pre></td></tr></table></figure>
+<h3 id="补齐尾部字符串-padend"><a class="markdownIt-Anchor" href="#补齐尾部字符串-padend"></a> 补齐尾部字符串 padEnd()</h3>
+<p>参数同padStart。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line">str.<span class="title function_">padEnd</span>(<span class="number">15</span>, <span class="string">&#x27;a&#x27;</span>) <span class="comment">// Hello Worldaaaa</span></span><br><span class="line">str.<span class="title function_">padEnd</span>(<span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">str.<span class="title function_">padEnd</span>(<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="字符串转为数字"><a class="markdownIt-Anchor" href="#字符串转为数字"></a> 字符串转为数字</h2>
+<h3 id="字符串转为整数-parseint"><a class="markdownIt-Anchor" href="#字符串转为整数-parseint"></a> 字符串转为整数 parseInt()</h3>
+<p>参数：</p>
+<p><code>string</code>，必须，要被转换的字符串。</p>
+<p><code>radix</code>，可选，要解析的数字技术，介于2  ~ 36之间。</p>
+<ol>
+<li>当参数 radix 的值为 0，或没有设置该参数时，parseInt() 会根据 string 来判断数字的基数。</li>
+<li>当参数 radix 的值以 “0x” 或 “0X” 开头，将以 16 为基数</li>
+<li>如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN</li>
+<li>只有字符串中的第一个数字会被返回，当遇到第一个不是数字的字符为止</li>
+<li>如果字符串的第一个字符不能被转换为数字，就会返回 NaN</li>
+<li>字符串开头和结尾的空格是允许的</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numStr = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">parseInt</span>(numStr) <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符串转为浮点数-parsefloat"><a class="markdownIt-Anchor" href="#字符串转为浮点数-parsefloat"></a> 字符串转为浮点数 parseFloat()</h3>
+<p>该方法指定字符串中的首个字符是否是数字。如果是，则对字符串进行解析，直到到达数字的末端为止，然后以数字返回该数字，而不是作为字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numStr = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="built_in">parseFloat</span>(numStr)</span><br></pre></td></tr></table></figure>
+<h2 id="快速概览"><a class="markdownIt-Anchor" href="#快速概览"></a> 快速概览</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"><span class="keyword">const</span> str2 = <span class="string">&#x27; Hello World &#x27;</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="number">123</span></span><br><span class="line"><span class="keyword">const</span> numStr = <span class="string">&#x27;123.00&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取字符串长度 length</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="property">length</span>) <span class="comment">// 11</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取字符串指定位置值 charAt()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">charAt</span>(<span class="number">1</span>)) <span class="comment">// e</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">charCodeAt</span>(<span class="number">1</span>)) <span class="comment">// 101</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取字符位置索引 indexOf</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">indexOf</span>(<span class="string">&#x27;l&#x27;</span>)) <span class="comment">// 2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">indexOf</span>(<span class="string">&#x27;x&#x27;</span>)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;l&#x27;</span>)) <span class="comment">// 8</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;y&#x27;</span>)) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取字符串是否包含子字符串 includes()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&#x27;o&#x27;</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&#x27;x&#x27;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&#x27;e&#x27;</span>, <span class="number">2</span>)) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 检测字符串是否以指定子字符串开始 startsWith()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&#x27;He&#x27;</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&#x27;he&#x27;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&#x27;Wo&#x27;</span>, <span class="number">6</span>)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 检测字符串是否以指定子字符串结尾 endsWith()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&#x27;ld&#x27;</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&#x27;ed&#x27;</span>)) <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&#x27;llo&#x27;</span>, <span class="number">5</span>)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接两个或多个字符串 cancat()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">concat</span>(<span class="string">&#x27; Javascript&#x27;</span>)) <span class="comment">// Hello World Javascript</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">concat</span>(<span class="string">&#x27; Vue&#x27;</span>, <span class="string">&#x27; React&#x27;</span>)) <span class="comment">// Hello World React</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串分割成数组 split()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)) <span class="comment">//[ &#x27;H&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;, &#x27; &#x27;, &#x27;W&#x27;, &#x27;o&#x27;, &#x27;r&#x27;, &#x27;l&#x27;, &#x27;d&#x27; ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>, <span class="number">5</span>)) <span class="comment">// [ &#x27;H&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27; ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)) <span class="comment">// [ &#x27;Hello&#x27;, &#x27;World&#x27; ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 截取字符串 slice()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">6</span>)) <span class="comment">// ello</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">slice</span>(<span class="number">6</span>)) <span class="comment">// World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">slice</span>()) <span class="comment">// Hello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">slice</span>(-<span class="number">2</span>)) <span class="comment">// ld</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">slice</span>(<span class="number">6</span>, <span class="number">1</span>)) <span class="comment">// </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 截取字符串 substring</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>(<span class="number">0</span>, <span class="number">5</span>)) <span class="comment">// Hello</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>(<span class="number">6</span>)) <span class="comment">// World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>()) <span class="comment">// Hello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>(<span class="number">6</span>, <span class="number">0</span>)) <span class="comment">// Hello</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">substring</span>(-<span class="number">1</span>)) <span class="comment">// Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成小写 toLowerCase()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">toLowerCase</span>()) <span class="comment">// hello world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成大写 toUpperCase()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">toUpperCase</span>()) <span class="comment">// HELLO WORLD</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 首字母变成小写</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str[<span class="number">0</span>].<span class="title function_">toLowerCase</span>() + str.<span class="title function_">substring</span>(<span class="number">1</span>)) <span class="comment">// hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换字符串 replace()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">replace</span>(<span class="string">&#x27;World&#x27;</span>, <span class="string">&#x27;Javascript&#x27;</span>)) <span class="comment">// Hello Javascript</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">replace</span>(<span class="regexp">/world/gi</span>, <span class="string">&#x27;Vue&#x27;</span>)) <span class="comment">// Hello Vue</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配字符串 match()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">match</span>(<span class="string">&#x27;o&#x27;</span>)) <span class="comment">// [ &#x27;o&#x27;, index: 4, input: &#x27;Hello World&#x27;, groups: undefined ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">match</span>(<span class="string">&#x27;f&#x27;</span>)) <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 检索字符串 search()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">search</span>(<span class="string">&#x27;o&#x27;</span>)) <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">search</span>(<span class="string">&#x27;f&#x27;</span>))  <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除字符串首尾空白字符 trim()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str2.<span class="title function_">trim</span>()) <span class="comment">// Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除开头的空白字符 trimStart()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str2.<span class="title function_">trimStart</span>()) <span class="comment">// Hello World </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除结尾的空白字符 trimEnd()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str2.<span class="title function_">trimEnd</span>()) <span class="comment">//  Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回字符串本身 valueOf()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">valueOf</span>()) <span class="comment">// Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回一个字符串对象 toString()</span></span><br><span class="line"><span class="keyword">const</span> result = num.<span class="title function_">toString</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> result, result) <span class="comment">// string 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 重复字符串 repeat()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">2</span>)) <span class="comment">// Hello WorldHello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">0</span>)) <span class="comment">// </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">2.8</span>)) <span class="comment">// Hello WorldHello World</span></span><br><span class="line"><span class="comment">// console.log(str.repeat(-1)) // Error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 补齐头部字符串 padStart()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padStart</span>(<span class="number">15</span>, <span class="string">&#x27;a&#x27;</span>)) <span class="comment">// aaaaHello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padStart</span>(<span class="number">8</span>, <span class="string">&#x27;a&#x27;</span>)) <span class="comment">// Hello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padStart</span>(<span class="number">15</span>)) <span class="comment">//    Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 补齐尾部字符串 padEnd()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padEnd</span>(<span class="number">15</span>, <span class="string">&#x27;a&#x27;</span>)) <span class="comment">// Hello Worldaaaa</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padEnd</span>(<span class="number">8</span>, <span class="string">&#x27;a&#x27;</span>)) <span class="comment">// Hello World</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padEnd</span>(<span class="number">15</span>)) <span class="comment">// Hello World  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转为整数 parseInt()</span></span><br><span class="line"><span class="keyword">const</span> result2 = <span class="built_in">parseInt</span>(numStr)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> result2, result2) <span class="comment">// number 123</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result3 = <span class="built_in">parseFloat</span>(numStr)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> result3, result3) <span class="comment">// number 123</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://simfantasy.github.io/2022/04/29/JavaScript%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="JavaScript字符串操作整理" target="_blank" rel="external">https://simfantasy.github.io/2022/04/29/JavaScript字符串操作整理/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/SimFantasy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/SimFantasy" target="_blank"><span class="text-dark">Sim</span><small class="ml-1x">PM &amp; UI &amp; Coder</small></a></h3>
+        <div>Stay hungry, stay foolish ~</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2022/04/18/CSS%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E5%AE%8C%E5%85%A8%E4%BD%93/" title="CSS垂直居中的完全体"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '8evVvpq9xtr4388bjiEtNaWo-gzGzoHsz',
+    appKey: 'zcu23sgYsodczmtTdIED8YP1',
+    placeholder: '说点什么吧~',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
