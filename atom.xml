@@ -6,7 +6,7 @@
   <link href="https://simfantasy.github.io/atom.xml" rel="self"/>
   
   <link href="https://simfantasy.github.io/"/>
-  <updated>2022-04-29T08:33:41.794Z</updated>
+  <updated>2022-05-05T02:36:52.895Z</updated>
   <id>https://simfantasy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ElementPlus的坑</title>
+    <link href="https://simfantasy.github.io/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/"/>
+    <id>https://simfantasy.github.io/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/</id>
+    <published>2022-05-05T01:49:50.000Z</published>
+    <updated>2022-05-05T02:36:52.895Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录一下在使用ElementPlus中的一些坑。</p><span id="more"></span><h3 id="按需导入"><a class="markdownIt-Anchor" href="#按需导入"></a> 按需导入</h3><blockquote><p><strong>坑：</strong></p><ol><li>之前没有这两个插件，不能自动导入，需要通过配安装babel，通过babel.config.js配置，组件需要统一全局手动注册一次，并且需要引入element-plus的基础样式。</li><li>按官方说明安装后，引入组件无效，卸载之前的element-plus和unplugin-vue-components、unplugin-auto-import。</li><li>重新进行安装，将配置放到webpack中。vue.config.ts中放入后会报错，不存在plugins的方法。</li><li>通过插件自动导入组件无需引入基础样式。</li></ol></blockquote><h4 id="自动导入"><a class="markdownIt-Anchor" href="#自动导入"></a> 自动导入</h4><p>需要安装<code>unplugin-vue-components</code> 和 <code>unplugin-auto-import</code>这两款插件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D unplugin-vue-components unplugin-auto-<span class="keyword">import</span></span><br></pre></td></tr></table></figure><p>然后在<code>vite</code>或者<code>webpack</code>中进行配置。</p><h5 id="vite"><a class="markdownIt-Anchor" href="#vite"></a> Vite</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">AutoImport</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ElementPlusResolver</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="webpack"><a class="markdownIt-Anchor" href="#webpack"></a> webpack</h5><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">AutoImport</span> = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-auto-import/webpack&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Components</span> = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/webpack&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">ElementPlusResolver</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="全局引入的样式"><a class="markdownIt-Anchor" href="#全局引入的样式"></a> 全局引入的样式</h3><blockquote><p><strong>坑：</strong></p><ol><li>全局引入样式，原来路径为<code>import 'element-plus/lib/theme-chalk/index.css'</code> ，基础样式引入为<code>import 'element-plus/lib/theme-chalk/base.css'</code></li><li>2.0以后官方修改为 <code>import 'element-plus/dist/index.css'</code></li></ol></blockquote><h3 id="loading组件"><a class="markdownIt-Anchor" href="#loading组件"></a> Loading组件</h3><blockquote><p><strong>坑：</strong></p><ol><li>loading组件在进行axios封装时使用，给所有axios封装的实例添加请求拦截器成功时，加载loading组件，在响应成功后关闭该组件。</li><li>在封装中需要配置 loading属性的类型，原来为 <code>import &#123; ILoadingInstance &#125; from 'element-plus/lib/el-loading/src/loading.type'</code></li><li>现在属性类型和位置为<code>import &#123; LoadingInstance &#125; from 'element-plus/lib/components/loading/src/loading'</code></li></ol></blockquote>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;记录一下在使用ElementPlus中的一些坑。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Vue" scheme="https://simfantasy.github.io/categories/Vue/"/>
+    
+    <category term="开发" scheme="https://simfantasy.github.io/categories/Vue/%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="vue" scheme="https://simfantasy.github.io/tags/vue/"/>
+    
+    <category term="ElementPlus" scheme="https://simfantasy.github.io/tags/ElementPlus/"/>
+    
+    <category term="避坑指南" scheme="https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Pinia使用小结</title>
@@ -38,11 +65,11 @@
     <category term="开发" scheme="https://simfantasy.github.io/categories/Vue/%E5%BC%80%E5%8F%91/"/>
     
     
+    <category term="vue" scheme="https://simfantasy.github.io/tags/vue/"/>
+    
     <category term="pinia" scheme="https://simfantasy.github.io/tags/pinia/"/>
     
     <category term="vuex" scheme="https://simfantasy.github.io/tags/vuex/"/>
-    
-    <category term="vue" scheme="https://simfantasy.github.io/tags/vue/"/>
     
   </entry>
   
@@ -160,7 +187,7 @@
     <link href="https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     <id>https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
     <published>2022-04-06T06:37:12.000Z</published>
-    <updated>2022-04-29T08:33:35.626Z</updated>
+    <updated>2022-05-05T01:51:50.656Z</updated>
     
     <content type="html"><![CDATA[<p>周末折腾了一下Electron，出现了<code>Electron 无法正确安装，请删除 node_modules/electron 并尝试再次安装</code>这样的错误，查了很多资料。</p><p>恰巧中午看到了一个帖子，按照步骤基本解决启动问题了。</p><span id="more"></span><p>步骤如下：</p><ol><li>先到<code>usr/local/lib/node_modules</code>中删除Electron的文件夹</li><li>然后使用官方npm安装好全局electron <code>npm i electron@latest -g</code></li><li>然后进入到到<code>usr/local/lib/node_modules/Electron</code>文件夹中，打开终端运行<code>node instatll.js</code></li><li>查看下chrome的版本，按官方升级到对应版以上</li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -D electron@latest</span><br><span class="line"># <span class="title class_">Electron</span><span class="number">18.0</span><span class="number">.1</span></span><br><span class="line"># <span class="title class_">Node</span><span class="number">16.13</span><span class="number">.2</span></span><br><span class="line">#<span class="title class_">Chromium</span> <span class="number">100.0</span><span class="number">.4896</span><span class="number">.60</span></span><br></pre></td></tr></table></figure><ol start="5"><li>然后再次启动就可以了成功了。</li></ol>]]></content>
     
@@ -174,6 +201,8 @@
     
     <category term="开发" scheme="https://simfantasy.github.io/categories/Electorn/%E5%BC%80%E5%8F%91/"/>
     
+    
+    <category term="避坑指南" scheme="https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/"/>
     
     <category term="electron" scheme="https://simfantasy.github.io/tags/electron/"/>
     

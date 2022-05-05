@@ -17,16 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>分类: 开发 | Sim Fantasy</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sim&#39;s Blog">
-<meta property="og:url" content="https://simfantasy.github.io/categories/VSCode/%E5%BC%80%E5%8F%91/index.html">
+  <title>ElementPlus的坑 | Sim Fantasy</title>
+  <meta name="description" content="记录一下在使用ElementPlus中的一些坑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElementPlus的坑">
+<meta property="og:url" content="https://simfantasy.github.io/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/index.html">
 <meta property="og:site_name" content="Sim&#39;s Blog">
+<meta property="og:description" content="记录一下在使用ElementPlus中的一些坑。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-05T01:49:50.000Z">
+<meta property="article:modified_time" content="2022-05-05T02:36:52.895Z">
 <meta property="article:author" content="Sim">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="ElementPlus">
+<meta property="article:tag" content="避坑指南">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://simfantasy.github.io/categories/VSCode/%E5%BC%80%E5%8F%91/index.html">
+  <link rel="canonical" href="https://simfantasy.github.io/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Sim&#39;s Blog" type="application/atom+xml">
   
@@ -295,73 +302,185 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">分类: 开发</h1>
-      <p class="hidden-xs">共 1 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/CSS/">CSS</a></li>
-          
-          <li><a href="/categories/Vue/">Vue</a></li>
-          
-          <li><a href="/categories/Electorn/">Electorn</a></li>
-          
-          <li><a href="/categories/CSS/开发/">开发</a></li>
-          
-          <li><a href="/categories/JavaScript/">JavaScript</a></li>
-          
-          <li><a href="/categories/VSCode/">VSCode</a></li>
-          
-          <li><a href="/categories/Vue/开发/">开发</a></li>
-          
-          <li><a href="/categories/Hexo/">Hexo</a></li>
-          
-          <li><a href="/categories/Electorn/开发/">开发</a></li>
-          
-          <li><a href="/categories/JavaScript/开发/">开发</a></li>
-          
-          <li><a href="/categories/VSCode/开发/">开发</a></li>
-          
-          <li><a href="/categories/Hexo/开发/">开发</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse开发" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              开发
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-        </h4>
-    </div>
-    <div id="collapse开发" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading开发">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/2022/04/15/VSCode%E4%BD%BF%E7%94%A8Prettier%E6%8C%89ESLint%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/" class="collection-item"   itemprop="url">
-  <time datetime="2022-04-15T10:38:41.000Z" itemprop="datePublished">2022-04-15</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> VSCode使用Prettier按ESLint格式化代码
-</a>
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text"> 按需导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text"> 自动导入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#vite"><span class="toc-number">1.1.1.</span> <span class="toc-text"> Vite</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#webpack"><span class="toc-number">1.1.2.</span> <span class="toc-text"> webpack</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text"> 全局引入的样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loading%E7%BB%84%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text"> Loading组件</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ElementPlus的坑" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ElementPlus的坑
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/" class="article-date">
+	  <time datetime="2022-05-05T01:49:50.000Z" itemprop="datePublished">2022-05-05</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>►<a class="article-category-link" href="/categories/Vue/%E5%BC%80%E5%8F%91/">开发</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/ElementPlus/" rel="tag">ElementPlus</a>, <a class="article-tag-link-link" href="/tags/vue/" rel="tag">vue</a>, <a class="article-tag-link-link" href="/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" rel="tag">避坑指南</a>
+  </span>
 
 
-              
-            </div>
-        </div>
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 445(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
+      </div>
     </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>记录一下在使用ElementPlus中的一些坑。</p>
+<span id="more"></span>
+<h3 id="按需导入"><a class="markdownIt-Anchor" href="#按需导入"></a> 按需导入</h3>
+<blockquote>
+<p><strong>坑：</strong></p>
+<ol>
+<li>之前没有这两个插件，不能自动导入，需要通过配安装babel，通过babel.config.js配置，组件需要统一全局手动注册一次，并且需要引入element-plus的基础样式。</li>
+<li>按官方说明安装后，引入组件无效，卸载之前的element-plus和unplugin-vue-components、unplugin-auto-import。</li>
+<li>重新进行安装，将配置放到webpack中。vue.config.ts中放入后会报错，不存在plugins的方法。</li>
+<li>通过插件自动导入组件无需引入基础样式。</li>
+</ol>
+</blockquote>
+<h4 id="自动导入"><a class="markdownIt-Anchor" href="#自动导入"></a> 自动导入</h4>
+<p>需要安装<code>unplugin-vue-components</code> 和 <code>unplugin-auto-import</code>这两款插件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D unplugin-vue-components unplugin-auto-<span class="keyword">import</span></span><br></pre></td></tr></table></figure>
+<p>然后在<code>vite</code>或者<code>webpack</code>中进行配置。</p>
+<h5 id="vite"><a class="markdownIt-Anchor" href="#vite"></a> Vite</h5>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">AutoImport</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ElementPlusResolver</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="webpack"><a class="markdownIt-Anchor" href="#webpack"></a> webpack</h5>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">AutoImport</span> = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-auto-import/webpack&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Components</span> = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/webpack&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">ElementPlusResolver</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="全局引入的样式"><a class="markdownIt-Anchor" href="#全局引入的样式"></a> 全局引入的样式</h3>
+<blockquote>
+<p><strong>坑：</strong></p>
+<ol>
+<li>全局引入样式，原来路径为<code>import 'element-plus/lib/theme-chalk/index.css'</code> ，基础样式引入为<code>import 'element-plus/lib/theme-chalk/base.css'</code></li>
+<li>2.0以后官方修改为 <code>import 'element-plus/dist/index.css'</code></li>
+</ol>
+</blockquote>
+<h3 id="loading组件"><a class="markdownIt-Anchor" href="#loading组件"></a> Loading组件</h3>
+<blockquote>
+<p><strong>坑：</strong></p>
+<ol>
+<li>loading组件在进行axios封装时使用，给所有axios封装的实例添加请求拦截器成功时，加载loading组件，在响应成功后关闭该组件。</li>
+<li>在封装中需要配置 loading属性的类型，原来为 <code>import &#123; ILoadingInstance &#125; from 'element-plus/lib/el-loading/src/loading.type'</code></li>
+<li>现在属性类型和位置为<code>import &#123; LoadingInstance &#125; from 'element-plus/lib/components/loading/src/loading'</code></li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://simfantasy.github.io/2022/05/05/ElementPlus%E7%9A%84%E5%9D%91/" title="ElementPlus的坑" target="_blank" rel="external">https://simfantasy.github.io/2022/05/05/ElementPlus的坑/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/SimFantasy" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/SimFantasy" target="_blank"><span class="text-dark">Sim</span><small class="ml-1x">PM &amp; UI &amp; Coder</small></a></h3>
+        <div>Stay hungry, stay foolish ~</div>
+      </div>
+    </figure>
+  </div>
 </div>
+
+
     </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2022/04/29/Pinia%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" title="Pinia使用小结"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">    <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -407,6 +526,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '8evVvpq9xtr4388bjiEtNaWo-gzGzoHsz',
+    appKey: 'zcu23sgYsodczmtTdIED8YP1',
+    placeholder: '说点什么吧~',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
