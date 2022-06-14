@@ -58,11 +58,11 @@
     <category term="Vue" scheme="https://simfantasy.github.io/categories/Vue/"/>
     
     
-    <category term="避坑指南" scheme="https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/"/>
-    
     <category term="vue" scheme="https://simfantasy.github.io/tags/vue/"/>
     
     <category term="ElementPlus" scheme="https://simfantasy.github.io/tags/ElementPlus/"/>
+    
+    <category term="避坑指南" scheme="https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/"/>
     
   </entry>
   
@@ -215,9 +215,9 @@
     <category term="Electorn" scheme="https://simfantasy.github.io/categories/Electorn/"/>
     
     
-    <category term="electron" scheme="https://simfantasy.github.io/tags/electron/"/>
-    
     <category term="避坑指南" scheme="https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/"/>
+    
+    <category term="electron" scheme="https://simfantasy.github.io/tags/electron/"/>
     
   </entry>
   
