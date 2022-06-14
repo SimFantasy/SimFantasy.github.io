@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://simfantasy.github.io/2022/06/14/Next-js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-06-14</lastmod>
+  </url>
+  <url>
+    <loc>https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-06-14</lastmod>
+  </url>
+  <url>
     <loc>https://simfantasy.github.io/2022/04/15/VSCode%E4%BD%BF%E7%94%A8Prettier%E6%8C%89ESLint%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2022-05-05</lastmod>
   </url>
@@ -18,10 +26,6 @@
   </url>
   <url>
     <loc>https://simfantasy.github.io/2022/04/18/CSS%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E5%AE%8C%E5%85%A8%E4%BD%93/</loc>
-    <lastmod>2022-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-05-05</lastmod>
   </url>
   <url>

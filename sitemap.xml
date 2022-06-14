@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://simfantasy.github.io/2022/06/14/Next-js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2022-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2022-06-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://simfantasy.github.io/2022/04/15/VSCode%E4%BD%BF%E7%94%A8Prettier%E6%8C%89ESLint%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -47,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://simfantasy.github.io/2022/03/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://simfantasy.github.io/2022/04/06/Electron%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -85,7 +94,7 @@
 
   <url>
     <loc>https://simfantasy.github.io/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -93,98 +102,112 @@
   
   <url>
     <loc>https://simfantasy.github.io/tags/css/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/tags/vue/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/tags/ElementPlus/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/tags/javascript/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/electron/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/vue/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/ElementPlus/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/javascript/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/react/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/tags/next-js/</loc>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/pinia/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/vuex/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/vscode/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/ESLint/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/Prettier/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/ElementUI/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/tags/hexo/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -193,42 +216,49 @@
   
   <url>
     <loc>https://simfantasy.github.io/categories/CSS/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/categories/Vue/</loc>
-    <lastmod>2022-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://simfantasy.github.io/categories/JavaScript/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/categories/Electorn/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/categories/Vue/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/categories/JavaScript/</loc>
+    <lastmod>2022-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://simfantasy.github.io/categories/React/</loc>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/categories/VSCode/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://simfantasy.github.io/categories/Hexo/</loc>
-    <lastmod>2022-05-05</lastmod>
+    <lastmod>2022-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
