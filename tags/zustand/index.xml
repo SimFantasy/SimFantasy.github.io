@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zustand on SimFantasy</title><link>http://localhost/tags/zustand/</link><description>Recent content in zustand on SimFantasy</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 05 Oct 2023 00:41:17 +0000</lastBuildDate><atom:link href="http://localhost/tags/zustand/index.xml" rel="self" type="application/rss+xml"/><item><title>React状态横评</title><link>http://localhost/posts/react%E7%8A%B6%E6%80%81%E6%A8%AA%E8%AF%84/</link><pubDate>Thu, 05 Oct 2023 00:41:17 +0000</pubDate><guid>http://localhost/posts/react%E7%8A%B6%E6%80%81%E6%A8%AA%E8%AF%84/</guid><description>&lt;h3 id="从redux说起">从Redux说起&lt;a class="anchorjs-link" href="#%e4%bb%8eredux%e8%af%b4%e8%b5%b7">&lt;/a>&lt;/h3>&lt;p>吐槽：&lt;code>Redux&lt;/code>是&lt;code>React&lt;/code>绕不过的坑，一个据说不是&lt;code>React&lt;/code>专属的状态库（现在大部分js框架都是全家桶的年代），大量模板代码，过于复杂的学习曲线，总让我们感到困扰。&lt;/p>
+&lt;p>一个点击计数的&lt;code>state&lt;/code>，在&lt;code>Redux&lt;/code>中通常需要写&lt;code>store/index.js&lt;/code>，&lt;code>store/reducer.js&lt;/code>，&lt;code>store/actionCreator.js&lt;/code>，&lt;code>store/constants.js&lt;/code>四个文件，然后在全局通过&lt;code>Provider&lt;/code>进行连接，在调用的页面还需要通过&lt;code>connect&lt;/code>高阶进行包裹，然后通过props来映射，才能使用。&lt;/p>
+&lt;p>异步操作还需要通过第三方&lt;code>redux-thunk&lt;/code>或&lt;code>redux-saga&lt;/code>来实现。&lt;/p>
+&lt;p>所以对于这种时常会用到时常会用到但又不想去用的东西我们总是又爱又恨。好在&lt;code>React&lt;/code>的生态是丰富的，总会有更多的好用的工具出现。&lt;/p>
+&lt;p>下面我们来看下现在比较流行的&lt;code>RTK&lt;/code>和&lt;code>Zustand&lt;/code>，以及我比较喜欢的&lt;code>Valtio&lt;/code>，通过一个相同的案例（多个状态统一管理、本地计数、异步数据、异步数据传参）对这三个状态库在&lt;strong>功能层面&lt;/strong>上进行比较下，看下各自的优缺点。&lt;/p>
+&lt;p>实现方式：通过三个文件来写本地计数&lt;code>store/modules/counter.js&lt;/code>，异步获取数据&lt;code>store/modules/post.js&lt;/code>，异步数据传参&lt;code>store/modules/user.js&lt;/code>。通过&lt;code>store/index.js&lt;/code>来对多个状态进行统一管理导出。&lt;/p>
+&lt;p>最终实现效果：&lt;/p>
+&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://p.sda1.dev/12/9ee1d5dc474cec7a6c675ada29674278/image.png" data-action="zoom" alt="最终效果" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p></description></item></channel></rss>

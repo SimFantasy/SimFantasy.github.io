@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>typescript on SimFantasy</title><link>http://localhost/tags/typescript/</link><description>Recent content in typescript on SimFantasy</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 05 Oct 2023 00:29:00 +0000</lastBuildDate><atom:link href="http://localhost/tags/typescript/index.xml" rel="self" type="application/rss+xml"/><item><title>TypeScript 进阶</title><link>http://localhost/posts/typescript-%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 05 Oct 2023 00:29:00 +0000</pubDate><guid>http://localhost/posts/typescript-%E8%BF%9B%E9%98%B6/</guid><description>&lt;h3 id="面相对象">面相对象&lt;a class="anchorjs-link" href="#%e9%9d%a2%e7%9b%b8%e5%af%b9%e8%b1%a1">&lt;/a>&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;code>TS&lt;/code>为前端面向对象开发带来了契机&lt;/p>
+&lt;p>&lt;code>JS&lt;/code>语言没有类型检查，如果使用面向对象的方式开发，会产生大量的接口，而大量的接口会导致调用复杂度剧增，这种复杂度必须通过严格的类型检查来避免错误，尽管可以使用注释或文档或记忆力，但是它们没有强约束力。&lt;/p>
+&lt;p>&lt;code>TS&lt;/code>带来了完整的类型系统，因此开发复杂程序时，无论接口数量有多少，都可以获得完整的类型检查，并且这种检查是据有强约束力的。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>面向对象中有许多非常成熟的模式，能处理复杂问题&lt;/p>
+&lt;p>在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>TypeScript 基础</title><link>http://localhost/posts/typescript-%E5%9F%BA%E7%A1%80/</link><pubDate>Thu, 05 Oct 2023 00:26:45 +0000</pubDate><guid>http://localhost/posts/typescript-%E5%9F%BA%E7%A1%80/</guid><description>&lt;h3 id="javascript的问题">JavaScript的问题&lt;a class="anchorjs-link" href="#javascript%e7%9a%84%e9%97%ae%e9%a2%98">&lt;/a>&lt;/h3>&lt;ul>
+&lt;li>使用了不存在的变量、函数或成员&lt;/li>
+&lt;li>把一个不确定的类型当作一个确定的类型处理&lt;/li>
+&lt;li>在使用null或undefined的成员&lt;/li>
+&lt;/ul></description></item></channel></rss>
