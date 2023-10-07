@@ -782,20 +782,46 @@ post-container"><p>国内的NextJs资料太少了，B站上找了下讲的很少
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">163</span><span>    }
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">164</span><span>  }
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">165</span><span>}
-</span></span></code></pre></div><p>‍</p><h3 id=预渲染和获取数据总结>预渲染和获取数据总结<a class=anchorjs-link href=#%e9%a2%84%e6%b8%b2%e6%9f%93%e5%92%8c%e8%8e%b7%e5%8f%96%e6%95%b0%e6%8d%ae%e6%80%bb%e7%bb%93></a></h3><p>预渲染是指在服务端提前生成HTML的过程，这会带来更好的性能和SEO，NextJs支持两种形式的预渲染：静态生成和服务器端渲染。</p><p>‍</p><h4 id=静态生成static-generation>静态生成（Static Generation）<a class=anchorjs-link href=#%e9%9d%99%e6%80%81%e7%94%9f%e6%88%90static-generation></a></h4><p>一种在构建时(pnpm build)时生成HTML页面的预渲染方法。页面可以一次性构建后，由CDN缓存。如营销或博客网站。</p><ol><li>对于普通页面，使用<code>getStaticProps</code>方法提前获取数据</li><li>对于动态页面，还需要使用<code>getStaticPaths</code>方法</li><li>后备数据（fallback）的三个参数：false、true、blocking</li></ol><p>如果页面没有完全重新构建，页面将无法更新，在这种情况下可以使用增量静态再生成。</p><p>‍</p><h4 id=服务端渲染server-side-rendering>服务端渲染（Server-side rendering）<a class=anchorjs-link href=#%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%b8%b2%e6%9f%93server-side-rendering></a></h4><p>在请求时获取数据，根据传入请求中的参数处理数据。示例：新闻、产品列表页面。</p><ol><li><code>getServerSideProps</code>方法可以帮助获取服务端数据</li><li>将服务端预渲染与客户端数据获取相结合</li><li>在客户端获取数据时使用浅层路由<code>Shallow routing</code>，不调用<code>getStaticProps</code>或<code>getServerSideProps</code>的路由。</li></ol><p>‍</p><p>‍</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/next-js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ data-toggle=tooltip data-placement=top title=Next.js学习笔记>Previous<br><span>Next.js学习笔记</span></a></li><li class=next><a href=/posts/nextjs%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0%E4%B9%8B%E4%BA%8C/ data-toggle=tooltip data-placement=top title=NextJS重新学习之二>Next<br><span>NextJS重新学习之二</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
+</span></span></code></pre></div><p>‍</p><h3 id=预渲染和获取数据总结>预渲染和获取数据总结<a class=anchorjs-link href=#%e9%a2%84%e6%b8%b2%e6%9f%93%e5%92%8c%e8%8e%b7%e5%8f%96%e6%95%b0%e6%8d%ae%e6%80%bb%e7%bb%93></a></h3><p>预渲染是指在服务端提前生成HTML的过程，这会带来更好的性能和SEO，NextJs支持两种形式的预渲染：静态生成和服务器端渲染。</p><p>‍</p><h4 id=静态生成static-generation>静态生成（Static Generation）<a class=anchorjs-link href=#%e9%9d%99%e6%80%81%e7%94%9f%e6%88%90static-generation></a></h4><p>一种在构建时(pnpm build)时生成HTML页面的预渲染方法。页面可以一次性构建后，由CDN缓存。如营销或博客网站。</p><ol><li>对于普通页面，使用<code>getStaticProps</code>方法提前获取数据</li><li>对于动态页面，还需要使用<code>getStaticPaths</code>方法</li><li>后备数据（fallback）的三个参数：false、true、blocking</li></ol><p>如果页面没有完全重新构建，页面将无法更新，在这种情况下可以使用增量静态再生成。</p><p>‍</p><h4 id=服务端渲染server-side-rendering>服务端渲染（Server-side rendering）<a class=anchorjs-link href=#%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%b8%b2%e6%9f%93server-side-rendering></a></h4><p>在请求时获取数据，根据传入请求中的参数处理数据。示例：新闻、产品列表页面。</p><ol><li><code>getServerSideProps</code>方法可以帮助获取服务端数据</li><li>将服务端预渲染与客户端数据获取相结合</li><li>在客户端获取数据时使用浅层路由<code>Shallow routing</code>，不调用<code>getStaticProps</code>或<code>getServerSideProps</code>的路由。</li></ol><p>‍</p><p>‍</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/%E4%BD%BF%E7%94%A8vite-pretty-lint%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F%E7%9A%84%E9%85%8D%E7%BD%AEeslint%E5%92%8Cprettier/ data-toggle=tooltip data-placement=top title=使用vite-pretty-lint更加快速的配置ESLint和Prettier>Previous<br><span>使用vite-pretty-lint更加快速的配置ESLint和Prettier</span></a></li><li class=next><a href=/posts/nextjs%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0%E4%B9%8B%E4%BA%8C/ data-toggle=tooltip data-placement=top title=NextJS重新学习之二>Next<br><span>NextJS重新学习之二</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/firebase/>firebase</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
+<a href=/tags/auth0/>auth0</a>
+<a href=/tags/chakraui/>chakraui</a>
+<a href=/tags/css/>css</a>
+<a href=/tags/electron/>electron</a>
+<a href=/tags/elementplus/>ElementPlus</a>
+<a href=/tags/elementui/>elementui</a>
+<a href=/tags/elint/>elint</a>
+<a href=/tags/eslint/>eslint</a>
+<a href=/tags/express/>express</a>
+<a href=/tags/firebase/>firebase</a>
 <a href=/tags/formik/>formik</a>
+<a href=/tags/git/>git</a>
+<a href=/tags/graphql/>graphQL</a>
+<a href=/tags/hexo/>hexo</a>
+<a href=/tags/icon/>icon</a>
+<a href=/tags/javascript/>javascript</a>
 <a href=/tags/nextjs/>nextjs</a>
+<a href=/tags/node/>node</a>
+<a href=/tags/pinia/>pinia</a>
+<a href=/tags/prettier/>prettier</a>
 <a href=/tags/react/>react</a>
 <a href=/tags/react-query/>react-query</a>
+<a href=/tags/react-router/>react-router</a>
 <a href=/tags/redux-toolkit/>redux-toolkit</a>
+<a href=/tags/strapi/>strapi</a>
+<a href=/tags/styled-components/>styled-components</a>
 <a href=/tags/typescript/>typescript</a>
 <a href=/tags/valtio/>valtio</a>
-<a href=/tags/zustand/>zustand</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
+<a href=/tags/vite/>vite</a>
+<a href=/tags/vscode/>vscode</a>
+<a href=/tags/vue/>vue</a>
+<a href=/tags/vuex/>vuex</a>
+<a href=/tags/zustand/>zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
 <script src=/js/bootstrap.min.js crossorigin=anonymous></script>
 <script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
 <script src=/js/simple-jekyll-search.min.js></script>

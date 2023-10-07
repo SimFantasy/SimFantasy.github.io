@@ -1,0 +1,90 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>ElementPlus的坑 | SimFantasy</title><meta name=author content="Simz"><meta name=description content="记录一下在使用ElementPlus中的一些坑。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="ElementPlus的坑"><meta name=twitter:description content="记录一下在使用ElementPlus中的一些坑。"><meta property="og:title" content="ElementPlus的坑"><meta property="og:description" content="记录一下在使用ElementPlus中的一些坑。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/elementplus%E7%9A%84%E5%9D%91/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-05T09:49:50+00:00"><meta property="article:modified_time" content="2022-05-05T09:49:50+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span></button>
+<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>ElementPlus的坑</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2022-05-05</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/vue/ title=vue>vue</a>
+<a href=/tags/elementplus/ title=ElementPlus>ElementPlus</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/ title=避坑指南>避坑指南</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><p>记录一下在使用ElementPlus中的一些坑。</p><h3 id=按需导入>按需导入<a class=anchorjs-link href=#%e6%8c%89%e9%9c%80%e5%af%bc%e5%85%a5></a></h3><blockquote><p><strong>坑：</strong></p><ol><li>之前没有这两个插件，不能自动导入，需要通过配安装babel，通过babel.config.js配置，组件需要统一全局手动注册一次，并且需要引入element-plus的基础样式。</li><li>按官方说明安装后，引入组件无效，卸载之前的element-plus和unplugin-vue-components、unplugin-auto-import。</li><li>重新进行安装，将配置放到webpack中。vue.config.ts中放入后会报错，不存在plugins的方法。</li><li>通过插件自动导入组件无需引入基础样式。</li></ol></blockquote><h4 id=自动导入>自动导入<a class=anchorjs-link href=#%e8%87%aa%e5%8a%a8%e5%af%bc%e5%85%a5></a></h4><p>需要安装<code>unplugin-vue-components</code> 和 <code>unplugin-auto-import</code>这两款插件</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-javascript data-lang=javascript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>npm install -D unplugin-vue-components unplugin-auto-<span style=color:#00f>import</span>
+</span></span></code></pre></div><p>然后在<code>vite</code>或者<code>webpack</code>中进行配置。</p><h5 id=vite>Vite<a class=anchorjs-link href=#vite></a></h5><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-typescript data-lang=typescript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:red;font-style:italic>// vite.config.ts
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:red;font-style:italic></span><span style=color:#00f>import</span> AutoImport <span style=color:#00f>from</span> <span style=color:#009c00>&#39;unplugin-auto-import/vite&#39;</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span><span style=color:#00f>import</span> Components <span style=color:#00f>from</span> <span style=color:#009c00>&#39;unplugin-vue-components/vite&#39;</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#00f>import</span> { ElementPlusResolver } <span style=color:#00f>from</span> <span style=color:#009c00>&#39;unplugin-vue-components/resolvers&#39;</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#00f>export</span> <span style=color:#00f>default</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>  plugins: [
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>    <span style=color:red;font-style:italic>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span><span style=color:red;font-style:italic></span>    AutoImport({
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>      resolvers: [ElementPlusResolver()],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    }),
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>    Components({
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>      resolvers: [ElementPlusResolver()],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>    }),
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>  ],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>}
+</span></span></code></pre></div><h5 id=webpack>webpack<a class=anchorjs-link href=#webpack></a></h5><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-typescript data-lang=typescript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:red;font-style:italic>// webpack.config.js
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:red;font-style:italic></span><span style=color:#00f>const</span> AutoImport = <span style=color:#00f>require</span>(<span style=color:#009c00>&#39;unplugin-auto-import/webpack&#39;</span>)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span><span style=color:#00f>const</span> Components = <span style=color:#00f>require</span>(<span style=color:#009c00>&#39;unplugin-vue-components/webpack&#39;</span>)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#00f>const</span> { ElementPlusResolver } = <span style=color:#00f>require</span>(<span style=color:#009c00>&#39;unplugin-vue-components/resolvers&#39;</span>)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#00f>module</span>.exports = {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>  <span style=color:red;font-style:italic>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span><span style=color:red;font-style:italic></span>  plugins: [
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>    AutoImport({
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>      resolvers: [ElementPlusResolver()],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    }),
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>    Components({
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>      resolvers: [ElementPlusResolver()],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>    }),
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>  ],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>}
+</span></span></code></pre></div><h3 id=全局引入的样式>全局引入的样式<a class=anchorjs-link href=#%e5%85%a8%e5%b1%80%e5%bc%95%e5%85%a5%e7%9a%84%e6%a0%b7%e5%bc%8f></a></h3><blockquote><p><strong>坑：</strong></p><ol><li>全局引入样式，原来路径为<code>import 'element-plus/lib/theme-chalk/index.css'</code> ，基础样式引入为<code>import 'element-plus/lib/theme-chalk/base.css'</code></li><li>2.0以后官方修改为 <code>import 'element-plus/dist/index.css'</code></li></ol></blockquote><h3 id=loading组件>Loading组件<a class=anchorjs-link href=#loading%e7%bb%84%e4%bb%b6></a></h3><blockquote><p><strong>坑：</strong></p><ol><li>loading组件在进行axios封装时使用，给所有axios封装的实例添加请求拦截器成功时，加载loading组件，在响应成功后关闭该组件。</li><li>在封装中需要配置 loading属性的类型，原来为 <code>import { ILoadingInstance } from 'element-plus/lib/el-loading/src/loading.type'</code></li><li>现在属性类型和位置为<code>import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'</code></li></ol></blockquote><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/pinia%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/ data-toggle=tooltip data-placement=top title=Pinia使用小结>Previous<br><span>Pinia使用小结</span></a></li><li class=next><a href=/posts/next-js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ data-toggle=tooltip data-placement=top title=Next.js学习笔记>Next<br><span>Next.js学习笔记</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
+<a href=/tags/auth0/>auth0</a>
+<a href=/tags/chakraui/>chakraui</a>
+<a href=/tags/css/>css</a>
+<a href=/tags/electron/>electron</a>
+<a href=/tags/elementplus/>ElementPlus</a>
+<a href=/tags/elementui/>elementui</a>
+<a href=/tags/elint/>elint</a>
+<a href=/tags/eslint/>eslint</a>
+<a href=/tags/express/>express</a>
+<a href=/tags/firebase/>firebase</a>
+<a href=/tags/formik/>formik</a>
+<a href=/tags/git/>git</a>
+<a href=/tags/graphql/>graphQL</a>
+<a href=/tags/hexo/>hexo</a>
+<a href=/tags/icon/>icon</a>
+<a href=/tags/javascript/>javascript</a>
+<a href=/tags/nextjs/>nextjs</a>
+<a href=/tags/node/>node</a>
+<a href=/tags/pinia/>pinia</a>
+<a href=/tags/prettier/>prettier</a>
+<a href=/tags/react/>react</a>
+<a href=/tags/react-query/>react-query</a>
+<a href=/tags/react-router/>react-router</a>
+<a href=/tags/redux-toolkit/>redux-toolkit</a>
+<a href=/tags/strapi/>strapi</a>
+<a href=/tags/styled-components/>styled-components</a>
+<a href=/tags/typescript/>typescript</a>
+<a href=/tags/valtio/>valtio</a>
+<a href=/tags/vite/>vite</a>
+<a href=/tags/vscode/>vscode</a>
+<a href=/tags/vue/>vue</a>
+<a href=/tags/vuex/>vuex</a>
+<a href=/tags/zustand/>zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
+<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
+<script src=/js/simple-jekyll-search.min.js></script>
+<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
+<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
+<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>

@@ -7,7 +7,7 @@ ReactQuery 官方地址：ReactQuery
 部分中文文档地址：Tanstact Query 中文文档"><meta property="og:title" content="React Query学习笔记"><meta property="og:description" content="终于二刷了 Codevolution 大佬的这个系列，感觉比第一次确实是有了更多的理解。配合之前的foromik使用杠杠滴~
 教程地址：React Query Tutorial for Beginners
 ReactQuery 官方地址：ReactQuery
-部分中文文档地址：Tanstact Query 中文文档"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-query%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-10-21T14:43:34+00:00"><meta property="article:modified_time" content="2022-10-21T14:43:34+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
+部分中文文档地址：Tanstact Query 中文文档"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-query%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-10-21T14:43:34+00:00"><meta property="article:modified_time" content="2022-10-21T14:43:34+00:00"><meta property="og:see_also" content="http://localhost/posts/react-query-key-factory/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
@@ -903,20 +903,46 @@ post-container"><p>终于二刷了 Codevolution 大佬的这个系列，感觉�
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span>		}
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span>	})
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span><span>}
-</span></span></code></pre></div><p>使用乐观更新，就需要三个步骤：</p><ol><li><p>先使用<code>onMutate</code>在获取数据<code>mutate</code>调用时使用<code>cancelQueries</code>取消相关的查询。然后通过<code>getQueryData</code>拿到保存之前状态的数据快照。然后使用<code>setQueryData</code>执行乐观更新。返回具有具有快照数据的上下文对象<code>{ previousHeroData }</code>。</p></li><li><p>如果修改失败<code>onError</code>，则使用<code>onMutate</code>返回的上下文进行回滚。</p></li><li><p>使用<code>onSettled</code>来代替<code>onSuccess</code>，他表示在错误或成功之后的操作，通过主动查询失败重新获取数据。</p></li></ol><p>‍</p><h3 id=总结>总结<a class=anchorjs-link href=#%e6%80%bb%e7%bb%93></a></h3><p>ReactQuery 基本上能满足绝大部分的数据获取、提交的需求，同时简化数据获取的状态以及缓存的管理。上述内容基本满足业务的绝大部分需求，更多功能在遇到了再去查查官方文档。</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/formik%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%8C/ data-toggle=tooltip data-placement=top title=Formik学习笔记之二>Previous<br><span>Formik学习笔记之二</span></a></li><li class=next><a href=/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bfirestore/ data-toggle=tooltip data-placement=top title=Firebase学习笔记之Firestore>Next<br><span>Firebase学习笔记之Firestore</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
+</span></span></code></pre></div><p>使用乐观更新，就需要三个步骤：</p><ol><li><p>先使用<code>onMutate</code>在获取数据<code>mutate</code>调用时使用<code>cancelQueries</code>取消相关的查询。然后通过<code>getQueryData</code>拿到保存之前状态的数据快照。然后使用<code>setQueryData</code>执行乐观更新。返回具有具有快照数据的上下文对象<code>{ previousHeroData }</code>。</p></li><li><p>如果修改失败<code>onError</code>，则使用<code>onMutate</code>返回的上下文进行回滚。</p></li><li><p>使用<code>onSettled</code>来代替<code>onSuccess</code>，他表示在错误或成功之后的操作，通过主动查询失败重新获取数据。</p></li></ol><p>‍</p><h3 id=总结>总结<a class=anchorjs-link href=#%e6%80%bb%e7%bb%93></a></h3><p>ReactQuery 基本上能满足绝大部分的数据获取、提交的需求，同时简化数据获取的状态以及缓存的管理。上述内容基本满足业务的绝大部分需求，更多功能在遇到了再去查查官方文档。</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/formik%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BA%8C/ data-toggle=tooltip data-placement=top title=Formik学习笔记之二>Previous<br><span>Formik学习笔记之二</span></a></li><li class=next><a href=/posts/auth0%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/ data-toggle=tooltip data-placement=top title=Auth0身份验证>Next<br><span>Auth0身份验证</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/firebase/>firebase</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
+<a href=/tags/auth0/>auth0</a>
+<a href=/tags/chakraui/>chakraui</a>
+<a href=/tags/css/>css</a>
+<a href=/tags/electron/>electron</a>
+<a href=/tags/elementplus/>ElementPlus</a>
+<a href=/tags/elementui/>elementui</a>
+<a href=/tags/elint/>elint</a>
+<a href=/tags/eslint/>eslint</a>
+<a href=/tags/express/>express</a>
+<a href=/tags/firebase/>firebase</a>
 <a href=/tags/formik/>formik</a>
+<a href=/tags/git/>git</a>
+<a href=/tags/graphql/>graphQL</a>
+<a href=/tags/hexo/>hexo</a>
+<a href=/tags/icon/>icon</a>
+<a href=/tags/javascript/>javascript</a>
 <a href=/tags/nextjs/>nextjs</a>
+<a href=/tags/node/>node</a>
+<a href=/tags/pinia/>pinia</a>
+<a href=/tags/prettier/>prettier</a>
 <a href=/tags/react/>react</a>
 <a href=/tags/react-query/>react-query</a>
+<a href=/tags/react-router/>react-router</a>
 <a href=/tags/redux-toolkit/>redux-toolkit</a>
+<a href=/tags/strapi/>strapi</a>
+<a href=/tags/styled-components/>styled-components</a>
 <a href=/tags/typescript/>typescript</a>
 <a href=/tags/valtio/>valtio</a>
-<a href=/tags/zustand/>zustand</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
+<a href=/tags/vite/>vite</a>
+<a href=/tags/vscode/>vscode</a>
+<a href=/tags/vue/>vue</a>
+<a href=/tags/vuex/>vuex</a>
+<a href=/tags/zustand/>zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
 <script src=/js/bootstrap.min.js crossorigin=anonymous></script>
 <script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
 <script src=/js/simple-jekyll-search.min.js></script>
