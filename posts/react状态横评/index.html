@@ -910,7 +910,7 @@ post-container"><h3 id=从redux说起>从Redux说起<a class=anchorjs-link href=
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">18</span><span>  <span style=color:#8839ef>const</span> objectSnap <span style=color:#04a5e5;font-weight:700>=</span> useSnapshot(objectProxy)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">19</span><span>  <span style=color:#8839ef>return</span> objectSnap.bar
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">20</span><span>})
-</span></span></code></pre></div><p><code>valtio</code>足够简单、灵活，之前很多项目中我都会使用<code>valtio</code>做成<code>hooks</code>来做些<code>auth</code>的操作，比如使用<code>deriver</code>来将<code>auth</code>的信息存储到<code>localstorage</code>中，使用<code>computed</code>判断是否登录。</p><h3 id=总结>总结<a class=anchorjs-link href=#%e6%80%bb%e7%bb%93></a></h3><p><code>RTK</code>、<code>Zustand</code>、<code>Valtio</code>都是不错的状态库，代码量还是<code>Zustand</code>和<code>Valtio</code>有巨大的优势，<code>RTK</code>作为老牌状态库<code>Redux</code>的优化工具，在现代状态库中还是有很多缺失，机制上不如<code>zustand</code>、灵活性上不如<code>valtio</code>。</p><p><code>RTK</code>虽说槽点很多，但是有些可取之处，<code>RTK Query</code>结合<code>RTK</code>一起使用也是个不错的选择，但是用过<code>React Query</code>， <code>swr</code>，也会发现<code>RTK Query</code>的模板化代码和奇怪的组织结构让你没有兴趣使用，如果需要在项目中使用<code>Redux RTK</code>的话，当然还是可以使用<code>RTK Query</code>的，毕竟都是一个妈妈生的。</p><p><code>Zustand</code>是个可以用用的状态库，唯一让人吐槽的就是方法的嵌套，使用上有些心智负担，但中间件机制和足够简洁的使用方式足可以满足你对状态的使用需求。</p><p><code>Valtio</code>足够简单、灵活，如何更好的组织才会让你使用更加的得心应手。</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/typescript-%E8%BF%9B%E9%98%B6/ data-toggle=tooltip data-placement=top title="TypeScript 进阶">Previous<br><span>TypeScript 进阶</span></a></li><li class=next><a href=/posts/express/ data-toggle=tooltip data-placement=top title="NodeJs 之 Express">Next<br><span>NodeJs 之 Express</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
+</span></span></code></pre></div><p><code>valtio</code>足够简单、灵活，之前很多项目中我都会使用<code>valtio</code>做成<code>hooks</code>来做些<code>auth</code>的操作，比如使用<code>deriver</code>来将<code>auth</code>的信息存储到<code>localstorage</code>中，使用<code>computed</code>判断是否登录。</p><h3 id=总结>总结<a class=anchorjs-link href=#%e6%80%bb%e7%bb%93></a></h3><p><code>RTK</code>、<code>Zustand</code>、<code>Valtio</code>都是不错的状态库，代码量还是<code>Zustand</code>和<code>Valtio</code>有巨大的优势，<code>RTK</code>作为老牌状态库<code>Redux</code>的优化工具，在现代状态库中还是有很多缺失，机制上不如<code>zustand</code>、灵活性上不如<code>valtio</code>。</p><p><code>RTK</code>虽说槽点很多，但是有些可取之处，<code>RTK Query</code>结合<code>RTK</code>一起使用也是个不错的选择，但是用过<code>React Query</code>， <code>swr</code>，也会发现<code>RTK Query</code>的模板化代码和奇怪的组织结构让你没有兴趣使用，如果需要在项目中使用<code>Redux RTK</code>的话，当然还是可以使用<code>RTK Query</code>的，毕竟都是一个妈妈生的。</p><p><code>Zustand</code>是个可以用用的状态库，唯一让人吐槽的就是方法的嵌套，使用上有些心智负担，但中间件机制和足够简洁的使用方式足可以满足你对状态的使用需求。</p><p><code>Valtio</code>足够简单、灵活，如何更好的组织才会让你使用更加的得心应手。</p><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/typescript-%E8%BF%9B%E9%98%B6/ data-toggle=tooltip data-placement=top title="TypeScript 进阶">Previous<br><span>TypeScript 进阶</span></a></li><li class=next><a href=/posts/node-path/ data-toggle=tooltip data-placement=top title="Node 01 Path 模块">Next<br><span>Node 01 Path 模块</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
@@ -919,6 +919,7 @@ sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h
 <a href=/tags/auth0/>auth0</a>
 <a href=/tags/chakraui/>chakraui</a>
 <a href=/tags/css/>css</a>
+<a href=/tags/egg/>egg</a>
 <a href=/tags/electron/>electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
 <a href=/tags/elementui/>elementui</a>
@@ -932,14 +933,18 @@ sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h
 <a href=/tags/hexo/>hexo</a>
 <a href=/tags/icon/>icon</a>
 <a href=/tags/javascript/>javascript</a>
+<a href=/tags/koa/>koa</a>
+<a href=/tags/mongoddb/>mongoddb</a>
 <a href=/tags/nextjs/>nextjs</a>
 <a href=/tags/node/>node</a>
 <a href=/tags/pinia/>pinia</a>
 <a href=/tags/prettier/>prettier</a>
+<a href=/tags/prisma/>prisma</a>
 <a href=/tags/react/>react</a>
 <a href=/tags/react-query/>react-query</a>
 <a href=/tags/react-router/>react-router</a>
 <a href=/tags/redux-toolkit/>redux-toolkit</a>
+<a href=/tags/sequelize/>sequelize</a>
 <a href=/tags/strapi/>strapi</a>
 <a href=/tags/styled-components/>styled-components</a>
 <a href=/tags/typescript/>typescript</a>
