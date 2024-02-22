@@ -1,4 +1,5 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Node 05 Stream 流 | SimFantasy</title><meta name=author content="Simz"><meta name=description content="程序中的stream(流)可以想象当我们从一个文件中读取数据时，文件的二进制（字节）数据会源源不断的被读取到我们程序中，而这个一连串的字节，就是我们程序中的流。
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Node 05 Stream 流 | SimFantasy</title>
+<meta name=author content="Simz"><meta name=description content="程序中的stream(流)可以想象当我们从一个文件中读取数据时，文件的二进制（字节）数据会源源不断的被读取到我们程序中，而这个一连串的字节，就是我们程序中的流。
 
 是连续字节的一种表现形式和抽象概念
 流应该是可读的，也是可写的
@@ -10,14 +11,14 @@
 
 是连续字节的一种表现形式和抽象概念
 流应该是可读的，也是可写的
-"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/node-stream/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-08T23:00:55+08:00"><meta property="article:modified_time" content="2023-10-08T23:00:55+08:00"><meta property="og:see_also" content="http://localhost/posts/node-egg/"><meta property="og:see_also" content="http://localhost/posts/node-mongoose/"><meta property="og:see_also" content="http://localhost/posts/node-mongodb/"><meta property="og:see_also" content="http://localhost/posts/node-log/"><meta property="og:see_also" content="http://localhost/posts/node-validator/"><meta property="og:see_also" content="http://localhost/posts/node-prisma/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
-<link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/node-stream/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-08T23:00:55+08:00"><meta property="article:modified_time" content="2023-10-08T23:00:55+08:00"><meta property="og:see_also" content="http://localhost/posts/node-egg/"><meta property="og:see_also" content="http://localhost/posts/node-mongoose/"><meta property="og:see_also" content="http://localhost/posts/node-mongodb/"><meta property="og:see_also" content="http://localhost/posts/node-log/"><meta property="og:see_also" content="http://localhost/posts/node-validator/"><meta property="og:see_also" content="http://localhost/posts/node-prisma/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span></button>
-<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Node 05 Stream 流</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-10-08</div><div class=meta-item><i class="fa fa-tag"></i>
-<a href=/tags/node/ title=node>node</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=http://localhost/>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Node 05 Stream 流</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-10-08</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/node/ title=Node>Node</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><p>程序中的<code>stream(流)</code>可以想象当我们从一个文件中读取数据时，文件的二进制（字节）数据会源源不断的被读取到我们程序中，而这个一连串的字节，就是我们程序中的流。</p><ul><li>是连续字节的一种表现形式和抽象概念</li><li>流应该是可读的，也是可写的</li></ul><h3 id=为什么需要流>为什么需要流？<a class=anchorjs-link href=#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e6%b5%81></a></h3><p>直接通过 <code>readFile</code>或者 <code>writeFile</code>方式读写文件的问题。</p><ul><li>直接读写文件的方式，虽然简单，但是无法控制一些细节的操作，比如从什么位置开始读、读到什么位置、一次性读取多少个字节。</li><li>读到某个位置后，暂停读取，某个时刻恢复读取。</li><li>或者这个文件非常大，比如一个视频文件，一次性全部读取并不合适。</li></ul><p><code>Node</code>中很多对象是基于流实现的，<code>http</code>模块的<code>Request</code>和<code>Response</code>对象，<code>process.stdout</code>对象。<mark>所有的流都是<code>EventEmitter</code>的实例</mark>。</p><h4 id=nodejs中有四种基本流类型>Node.js中有四种基本流类型<a class=anchorjs-link href=#nodejs%e4%b8%ad%e6%9c%89%e5%9b%9b%e7%a7%8d%e5%9f%ba%e6%9c%ac%e6%b5%81%e7%b1%bb%e5%9e%8b></a></h4><ul><li><code>Writable</code>：可以向其写入数据的流（例如<code> fs.createWriteStream()</code>）。</li><li><code>Readable</code>：可以从中读取数据的流（例如 <code>fs.createReadStream()</code>）。</li><li><code>Duplex</code>：同时为<code>Readable</code>和的流<code>Writable</code>（例如 <code>net.Socket</code>）。</li><li><code>Transform</code>：<code>Duplex</code>可以在写入和读取数据时修改或转换数据的流（例如<code>zlib.createDeflate()</code>）。</li></ul><h3 id=fscreatereadstreampath-options>fs.createReadStream(path[, options])<a class=anchorjs-link href=#fscreatereadstreampath-options></a></h3><ul><li><code>path &lt;string> | &lt;Buffer> | &lt;URL></code></li><li><code>options &lt;string> | &lt;Object></code><ul><li><code>flags &lt;string> 参见 支持文件系统 flags。 默认值： 'r'</code></li><li><code>encoding &lt;string> ，文件编码，默认值：null</code></li><li><code>fd &lt;integer> | &lt;FileHandle> 默认值： null</code></li><li><code>mode &lt;integer> 默认值： 0o666</code></li><li><code>autoClose &lt;boolean> 默认值：true</code></li><li><code>emitClose &lt;boolean> 默认值： true</code></li><li><code>start &lt;integer>，文件读取开始位置</code></li><li><code>end &lt;integer> ， 文件读取结束位置，默认值： Infinity</code></li><li><code>highWaterMark &lt;integer> 一次性读取字节的长度，默认值： 64 * 1024</code></li><li><code>fs &lt;Object> | &lt;null> 默认值： null</code></li></ul></li><li><code>返回： &lt;fs.ReadStream></code></li></ul><p>如果指定了 <code>fd</code>，则 <code>ReadStream</code> 将忽略 <code>path</code> 参数并使用指定的文件描述符。 这意味着不会触发 <code>'open'</code> 事件。</p><p>如果 <code>fd</code> 指向仅支持阻塞读取的字符设备（例如键盘或声卡），则读取操作不会在数据可用之前完成。 这可以防止进程退出和流自然关闭。</p><p>默认情况下，流将在销毁后触发 <code>'close'</code> 事件。 将 <code>emitClose</code> 选项设置为 <code>false</code> 以更改此行为。</p><p>示例：</p><p>通过<code>fs</code>中的<code>createReadStream</code>，读取文件中的内容</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span><span style=color:#8839ef>const</span> fs <span style=color:#04a5e5;font-weight:700>=</span> require(<span style=color:#40a02b>&#39;fs&#39;</span>)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 2</span><span>
@@ -183,87 +184,81 @@ post-container"><p>程序中的<code>stream(流)</code>可以想象当我们从�
 </span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">44</span><span><span style=color:#9ca0b0;font-style:italic>// 最后写入成功
 </span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">45</span><span><span style=color:#9ca0b0;font-style:italic>// 写入结束
 </span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">46</span><span><span style=color:#9ca0b0;font-style:italic>// 写入关闭
-</span></span></span></code></pre></div><h3 id=通过pipe传递流>通过Pipe传递流<a class=anchorjs-link href=#%e9%80%9a%e8%bf%87pipe%e4%bc%a0%e9%80%92%e6%b5%81></a></h3><p>通过<code>createReadStream</code>来读取文件，通过<code>pipe</code> (管道)来传递读取的<code>buffer</code>内容，传递给<code>createWriteStream</code>写入文件。</p><p>示例：</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span>const fs = require(&#39;fs&#39;)
+</span></span></span></code></pre></div><h3 id=通过pipe传递流>通过Pipe传递流<a class=anchorjs-link href=#%e9%80%9a%e8%bf%87pipe%e4%bc%a0%e9%80%92%e6%b5%81></a></h3><p>通过<code>createReadStream</code>来读取文件，通过<code>pipe</code> (管道)来传递读取的<code>buffer</code>内容，传递给<code>createWriteStream</code>写入文件。</p><p>示例：</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span><span style=color:#8839ef>const</span> fs <span style=color:#04a5e5;font-weight:700>=</span> require(<span style=color:#40a02b>&#39;fs&#39;</span>)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 2</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 3</span><span>// 1. 读取文件
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 4</span><span>const readStream = fs.createReadStream(&#39;./demo2.txt&#39;)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 3</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#fe640b>1.</span> <span style=color:#d20f39>读取文件</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 4</span><span><span style=color:#8839ef>const</span> readStream <span style=color:#04a5e5;font-weight:700>=</span> fs<span style=color:#04a5e5;font-weight:700>.</span>createReadStream(<span style=color:#40a02b>&#39;./demo2.txt&#39;</span>)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 5</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 6</span><span>// 2. 写入文件
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 7</span><span>const writeStream = fs.createWriteStream(&#39;./demo.txt&#39;, {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 8</span><span>	flags: &#39;a+&#39;
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 6</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#fe640b>2.</span> <span style=color:#d20f39>写入文件</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 7</span><span><span style=color:#8839ef>const</span> writeStream <span style=color:#04a5e5;font-weight:700>=</span> fs<span style=color:#04a5e5;font-weight:700>.</span>createWriteStream(<span style=color:#40a02b>&#39;./demo.txt&#39;</span>, {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 8</span><span>	flags: <span style=color:#40a02b>&#39;a+&#39;</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 9</span><span>})
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">10</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">11</span><span>// 3. 管道流
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">12</span><span>readStream.pipe(writeStream)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">11</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#fe640b>3.</span> <span style=color:#d20f39>管道流</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">12</span><span>readStream<span style=color:#04a5e5;font-weight:700>.</span>pipe(writeStream)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">13</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">14</span><span>// 4. 监听读取流
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">15</span><span>readStream.on(&#39;end&#39;, err =&gt; {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">16</span><span>	if (err) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">17</span><span>		console.log(&#39;读取失败&#39;)
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">18</span><span>	} else {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">19</span><span>		console.log(&#39;读取成功&#39;)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">14</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#fe640b>4.</span> <span style=color:#d20f39>监听读取流</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">15</span><span>readStream<span style=color:#04a5e5;font-weight:700>.</span>on(<span style=color:#40a02b>&#39;end&#39;</span>, err <span style=color:#04a5e5;font-weight:700>=&gt;</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">16</span><span>	<span style=color:#8839ef>if</span> (err) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">17</span><span>		console<span style=color:#04a5e5;font-weight:700>.</span>log(<span style=color:#40a02b>&#39;读取失败&#39;</span>)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">18</span><span>	} <span style=color:#8839ef>else</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">19</span><span>		console<span style=color:#04a5e5;font-weight:700>.</span>log(<span style=color:#40a02b>&#39;读取成功&#39;</span>)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">20</span><span>	}
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">21</span><span>})
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">22</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">23</span><span>// 5. 监听写入流
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">24</span><span>writeStream.on(&#39;finish&#39;, err =&gt; {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">25</span><span>	if (err) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">26</span><span>		console.log(&#39;写入失败&#39;)
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">27</span><span>	} else {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">28</span><span>		console.log(&#39;写入成功&#39;)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">23</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#fe640b>5.</span> <span style=color:#d20f39>监听写入流</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">24</span><span>writeStream<span style=color:#04a5e5;font-weight:700>.</span>on(<span style=color:#40a02b>&#39;finish&#39;</span>, err <span style=color:#04a5e5;font-weight:700>=&gt;</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">25</span><span>	<span style=color:#8839ef>if</span> (err) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">26</span><span>		console<span style=color:#04a5e5;font-weight:700>.</span>log(<span style=color:#40a02b>&#39;写入失败&#39;</span>)
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">27</span><span>	} <span style=color:#8839ef>else</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">28</span><span>		console<span style=color:#04a5e5;font-weight:700>.</span>log(<span style=color:#40a02b>&#39;写入成功&#39;</span>)
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">29</span><span>	}
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">30</span><span>})
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">31</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">32</span><span>// 读取成功
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">33</span><span>// 写入成功
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">32</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#d20f39>读取成功</span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">33</span><span><span style=color:#04a5e5;font-weight:700>//</span> <span style=color:#d20f39>写入成功</span>
 </span></span></code></pre></div><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/node-buffer/ data-toggle=tooltip data-placement=top title="Node 04 Buffer 类">Previous<br><span>Node 04 Buffer 类</span></a></li><li class=next><a href=/posts/node-http/ data-toggle=tooltip data-placement=top title="Node 06 Http 服务">Next<br><span>Node 06 Http 服务</span></a></li></ul><hr style=visibility:hidden></div><div class="col-lg-2 col-lg-offset-0
 visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
-<a href=/tags/auth0/>auth0</a>
-<a href=/tags/chakraui/>chakraui</a>
-<a href=/tags/css/>css</a>
-<a href=/tags/egg/>egg</a>
-<a href=/tags/electron/>electron</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>Api</a>
+<a href=/tags/auth0/>Auth0</a>
+<a href=/tags/chakraui/>Chakraui</a>
+<a href=/tags/css/>Css</a>
+<a href=/tags/egg/>Egg</a>
+<a href=/tags/electron/>Electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
-<a href=/tags/elementui/>elementui</a>
-<a href=/tags/elint/>elint</a>
-<a href=/tags/eslint/>eslint</a>
-<a href=/tags/express/>express</a>
-<a href=/tags/firebase/>firebase</a>
-<a href=/tags/formik/>formik</a>
-<a href=/tags/git/>git</a>
-<a href=/tags/graphql/>graphQL</a>
-<a href=/tags/hexo/>hexo</a>
-<a href=/tags/icon/>icon</a>
-<a href=/tags/javascript/>javascript</a>
-<a href=/tags/koa/>koa</a>
-<a href=/tags/mongoddb/>mongoddb</a>
-<a href=/tags/nextjs/>nextjs</a>
-<a href=/tags/node/>node</a>
-<a href=/tags/pinia/>pinia</a>
-<a href=/tags/prettier/>prettier</a>
-<a href=/tags/prisma/>prisma</a>
-<a href=/tags/react/>react</a>
-<a href=/tags/react-query/>react-query</a>
-<a href=/tags/react-router/>react-router</a>
-<a href=/tags/redux-toolkit/>redux-toolkit</a>
-<a href=/tags/sequelize/>sequelize</a>
-<a href=/tags/strapi/>strapi</a>
-<a href=/tags/styled-components/>styled-components</a>
-<a href=/tags/typescript/>typescript</a>
-<a href=/tags/valtio/>valtio</a>
-<a href=/tags/vite/>vite</a>
-<a href=/tags/vscode/>vscode</a>
-<a href=/tags/vue/>vue</a>
-<a href=/tags/vuex/>vuex</a>
-<a href=/tags/zustand/>zustand</a>
-<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
-<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
-<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
-<script src=/js/simple-jekyll-search.min.js></script>
-<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
-<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
-<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
+<a href=/tags/elementui/>Elementui</a>
+<a href=/tags/elint/>Elint</a>
+<a href=/tags/eslint/>Eslint</a>
+<a href=/tags/express/>Express</a>
+<a href=/tags/firebase/>Firebase</a>
+<a href=/tags/formik/>Formik</a>
+<a href=/tags/git/>Git</a>
+<a href=/tags/graphql/>GraphQL</a>
+<a href=/tags/hexo/>Hexo</a>
+<a href=/tags/icon/>Icon</a>
+<a href=/tags/javascript/>Javascript</a>
+<a href=/tags/koa/>Koa</a>
+<a href=/tags/mongoddb/>Mongoddb</a>
+<a href=/tags/nextjs/>Nextjs</a>
+<a href=/tags/node/>Node</a>
+<a href=/tags/pinia/>Pinia</a>
+<a href=/tags/prettier/>Prettier</a>
+<a href=/tags/prisma/>Prisma</a>
+<a href=/tags/react/>React</a>
+<a href=/tags/react-query/>React-Query</a>
+<a href=/tags/react-router/>React-Router</a>
+<a href=/tags/redux-toolkit/>Redux-Toolkit</a>
+<a href=/tags/sequelize/>Sequelize</a>
+<a href=/tags/strapi/>Strapi</a>
+<a href=/tags/styled-components/>Styled-Components</a>
+<a href=/tags/typescript/>Typescript</a>
+<a href=/tags/valtio/>Valtio</a>
+<a href=/tags/vite/>Vite</a>
+<a href=/tags/vscode/>Vscode</a>
+<a href=/tags/vue/>Vue</a>
+<a href=/tags/vuex/>Vuex</a>
+<a href=/tags/zustand/>Zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>

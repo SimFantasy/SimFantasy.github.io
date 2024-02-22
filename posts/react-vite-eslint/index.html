@@ -1,14 +1,15 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>React + Vite + ESLint + Prettier | SimFantasy</title><meta name=author content="Simz"><meta name=description content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="React + Vite + ESLint + Prettier"><meta name=twitter:description content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta property="og:title" content="React + Vite + ESLint + Prettier"><meta property="og:description" content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-vite-eslint/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-07-25T18:52:45+00:00"><meta property="article:modified_time" content="2022-07-25T18:52:45+00:00"><meta property="og:see_also" content="http://localhost/posts/%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E8%89%B2%E6%9D%BF%E6%A0%B7%E5%BC%8F%E6%A8%A1%E6%9D%BF/"><meta property="og:see_also" content="http://localhost/posts/%E4%BD%BF%E7%94%A8vite-pretty-lint%E6%9B%B4%E5%8A%A0%E5%BF%AB%E9%80%9F%E7%9A%84%E9%85%8D%E7%BD%AEeslint%E5%92%8Cprettier/"><meta property="og:see_also" content="http://localhost/posts/vscode%E4%BD%BF%E7%94%A8prettier%E6%8C%89eslint%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
-<link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>React + Vite + ESLint + Prettier | SimFantasy</title>
+<meta name=author content="Simz"><meta name=description content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="React + Vite + ESLint + Prettier"><meta name=twitter:description content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta property="og:title" content="React + Vite + ESLint + Prettier"><meta property="og:description" content="Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-vite-eslint/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-07-25T18:52:45+00:00"><meta property="article:modified_time" content="2022-07-25T18:52:45+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span></button>
-<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>React + Vite + ESLint + Prettier</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2022-07-25</div><div class=meta-item><i class="fa fa-tag"></i>
-<a href=/tags/vscode/ title=vscode>vscode</a>
-<a href=/tags/vite/ title=vite>vite</a>
-<a href=/tags/elint/ title=elint>elint</a>
-<a href=/tags/prettier/ title=prettier>prettier</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=http://localhost/>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>React + Vite + ESLint + Prettier</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2022-07-25</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/vscode/ title=Vscode>Vscode</a>
+<a href=/tags/vite/ title=Vite>Vite</a>
+<a href=/tags/elint/ title=Elint>Elint</a>
+<a href=/tags/prettier/ title=Prettier>Prettier</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><p>Vite到3了，在React中比自带的create-react-app，快太多，用上就基本换不过去的感觉。记录下配置ESLint和Prettier，看了很多教程，配置大多都是和Typescript一起，本人还未到那个层级，只能上JS。废话少说开始干活~</p><h3 id=创建项目>创建项目<a class=anchorjs-link href=#%e5%88%9b%e5%bb%ba%e9%a1%b9%e7%9b%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span>yarn create vite
 </span></span></code></pre></div><p>然后提示输入项目名称 <code>my-app</code> ，进入项目 <code>cd my-app</code>，安装依赖 <code>yarn</code>，然后启动项目<code>yarn dev</code>。运行后，vite项目的默认端口改成了<code>5173</code>。</p><h3 id=eslint>ESLint<a class=anchorjs-link href=#eslint></a></h3><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span>npm init <span style=color:#d20f39>@</span>eslint<span style=color:#04a5e5;font-weight:700>/</span>config
@@ -33,36 +34,36 @@ post-container"><p>Vite到3了，在React中比自带的create-react-app，快�
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 9</span><span>  bracketSpacing<span style=color:#04a5e5;font-weight:700>:</span> <span style=color:#fe640b>true</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">10</span><span>}
 </span></span></code></pre></div><p>需要注意：<code>jsxSingleQuote: true</code> 这条默认是false，如果设置为true，让jsx中使用单引号，就需要在ESLint中配置<code>'prefer-single': 'on'</code>开启，否则报错</p><h3 id=eslint--prettier>ESLint + Prettier<a class=anchorjs-link href=#eslint--prettier></a></h3><p>接下来在 ESLint 中引入 Prettier，安装相关依赖。</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span>yarn add eslint<span style=color:#04a5e5;font-weight:700>-</span>config<span style=color:#04a5e5;font-weight:700>-</span>prettier eslint<span style=color:#04a5e5;font-weight:700>-</span>plugin<span style=color:#04a5e5;font-weight:700>-</span>prettier <span style=color:#04a5e5;font-weight:700>-</span>D
-</span></span></code></pre></div><p>再来配置下 .eslintrc.cjs</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span>module.exports = {
+</span></span></code></pre></div><p>再来配置下 .eslintrc.cjs</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span>module<span style=color:#04a5e5;font-weight:700>.</span>exports <span style=color:#04a5e5;font-weight:700>=</span> {
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 2</span><span>  env: {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 3</span><span>    browser: true,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 4</span><span>    es2021: true
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 3</span><span>    browser: <span style=color:#04a5e5>true</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 4</span><span>    es2021: <span style=color:#04a5e5>true</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 5</span><span>  },
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 6</span><span>  extends: [
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 7</span><span>    &#39;eslint:recommended&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 8</span><span>    &#39;plugin:react/recommended&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 9</span><span>    &#39;plugin:prettier/recommended&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">10</span><span>    &#39;plugin:react/jsx-runtime&#39;
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 6</span><span>  <span style=color:#8839ef>extends</span>: [
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 7</span><span>    <span style=color:#40a02b>&#39;eslint:recommended&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 8</span><span>    <span style=color:#40a02b>&#39;plugin:react/recommended&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 9</span><span>    <span style=color:#40a02b>&#39;plugin:prettier/recommended&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">10</span><span>    <span style=color:#40a02b>&#39;plugin:react/jsx-runtime&#39;</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">11</span><span>  ],
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">12</span><span>  parserOptions: {
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">13</span><span>    ecmaFeatures: {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">14</span><span>      jsx: true
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">14</span><span>      jsx: <span style=color:#04a5e5>true</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">15</span><span>    },
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">16</span><span>    ecmaVersion: &#39;latest&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">17</span><span>    sourceType: &#39;module&#39;
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">16</span><span>    ecmaVersion: <span style=color:#40a02b>&#39;latest&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">17</span><span>    sourceType: <span style=color:#40a02b>&#39;module&#39;</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">18</span><span>  },
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">19</span><span>  plugins: [&#39;react&#39;, &#39;prettier&#39;],
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">19</span><span>  plugins: [<span style=color:#40a02b>&#39;react&#39;</span>, <span style=color:#40a02b>&#39;prettier&#39;</span>],
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">20</span><span>  rules: {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">21</span><span>    &#39;prettier/prettier&#39;: &#39;error&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">22</span><span>    &#39;arrow-body-style&#39;: &#39;off&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">23</span><span>    &#39;prefer-arrow-callback&#39;: &#39;off&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">24</span><span>    &#39;no-undef&#39;: &#39;off&#39;,  
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">25</span><span>    &#39;no-unused-vars&#39;: &#39;off&#39;,
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">26</span><span>    &#39;react/prop-types&#39;: &#39;off&#39;
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">21</span><span>    <span style=color:#40a02b>&#39;prettier/prettier&#39;</span>: <span style=color:#40a02b>&#39;error&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">22</span><span>    <span style=color:#40a02b>&#39;arrow-body-style&#39;</span>: <span style=color:#40a02b>&#39;off&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">23</span><span>    <span style=color:#40a02b>&#39;prefer-arrow-callback&#39;</span>: <span style=color:#40a02b>&#39;off&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">24</span><span>    <span style=color:#40a02b>&#39;no-undef&#39;</span>: <span style=color:#40a02b>&#39;off&#39;</span>,  
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">25</span><span>    <span style=color:#40a02b>&#39;no-unused-vars&#39;</span>: <span style=color:#40a02b>&#39;off&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">26</span><span>    <span style=color:#40a02b>&#39;react/prop-types&#39;</span>: <span style=color:#40a02b>&#39;off&#39;</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">27</span><span>  },
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">28</span><span>  settings: {
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">29</span><span>    react: {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">30</span><span>      version: &#39;detect&#39;
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">30</span><span>      version: <span style=color:#40a02b>&#39;detect&#39;</span>
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">31</span><span>    }
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">32</span><span>  }
 </span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">33</span><span>}
@@ -95,49 +96,43 @@ visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
-<a href=/tags/auth0/>auth0</a>
-<a href=/tags/chakraui/>chakraui</a>
-<a href=/tags/css/>css</a>
-<a href=/tags/egg/>egg</a>
-<a href=/tags/electron/>electron</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>Api</a>
+<a href=/tags/auth0/>Auth0</a>
+<a href=/tags/chakraui/>Chakraui</a>
+<a href=/tags/css/>Css</a>
+<a href=/tags/egg/>Egg</a>
+<a href=/tags/electron/>Electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
-<a href=/tags/elementui/>elementui</a>
-<a href=/tags/elint/>elint</a>
-<a href=/tags/eslint/>eslint</a>
-<a href=/tags/express/>express</a>
-<a href=/tags/firebase/>firebase</a>
-<a href=/tags/formik/>formik</a>
-<a href=/tags/git/>git</a>
-<a href=/tags/graphql/>graphQL</a>
-<a href=/tags/hexo/>hexo</a>
-<a href=/tags/icon/>icon</a>
-<a href=/tags/javascript/>javascript</a>
-<a href=/tags/koa/>koa</a>
-<a href=/tags/mongoddb/>mongoddb</a>
-<a href=/tags/nextjs/>nextjs</a>
-<a href=/tags/node/>node</a>
-<a href=/tags/pinia/>pinia</a>
-<a href=/tags/prettier/>prettier</a>
-<a href=/tags/prisma/>prisma</a>
-<a href=/tags/react/>react</a>
-<a href=/tags/react-query/>react-query</a>
-<a href=/tags/react-router/>react-router</a>
-<a href=/tags/redux-toolkit/>redux-toolkit</a>
-<a href=/tags/sequelize/>sequelize</a>
-<a href=/tags/strapi/>strapi</a>
-<a href=/tags/styled-components/>styled-components</a>
-<a href=/tags/typescript/>typescript</a>
-<a href=/tags/valtio/>valtio</a>
-<a href=/tags/vite/>vite</a>
-<a href=/tags/vscode/>vscode</a>
-<a href=/tags/vue/>vue</a>
-<a href=/tags/vuex/>vuex</a>
-<a href=/tags/zustand/>zustand</a>
-<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
-<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
-<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
-<script src=/js/simple-jekyll-search.min.js></script>
-<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
-<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
-<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
+<a href=/tags/elementui/>Elementui</a>
+<a href=/tags/elint/>Elint</a>
+<a href=/tags/eslint/>Eslint</a>
+<a href=/tags/express/>Express</a>
+<a href=/tags/firebase/>Firebase</a>
+<a href=/tags/formik/>Formik</a>
+<a href=/tags/git/>Git</a>
+<a href=/tags/graphql/>GraphQL</a>
+<a href=/tags/hexo/>Hexo</a>
+<a href=/tags/icon/>Icon</a>
+<a href=/tags/javascript/>Javascript</a>
+<a href=/tags/koa/>Koa</a>
+<a href=/tags/mongoddb/>Mongoddb</a>
+<a href=/tags/nextjs/>Nextjs</a>
+<a href=/tags/node/>Node</a>
+<a href=/tags/pinia/>Pinia</a>
+<a href=/tags/prettier/>Prettier</a>
+<a href=/tags/prisma/>Prisma</a>
+<a href=/tags/react/>React</a>
+<a href=/tags/react-query/>React-Query</a>
+<a href=/tags/react-router/>React-Router</a>
+<a href=/tags/redux-toolkit/>Redux-Toolkit</a>
+<a href=/tags/sequelize/>Sequelize</a>
+<a href=/tags/strapi/>Strapi</a>
+<a href=/tags/styled-components/>Styled-Components</a>
+<a href=/tags/typescript/>Typescript</a>
+<a href=/tags/valtio/>Valtio</a>
+<a href=/tags/vite/>Vite</a>
+<a href=/tags/vscode/>Vscode</a>
+<a href=/tags/vue/>Vue</a>
+<a href=/tags/vuex/>Vuex</a>
+<a href=/tags/zustand/>Zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>

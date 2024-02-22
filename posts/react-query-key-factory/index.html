@@ -1,4 +1,5 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Query Key Factory - React Query 的 QueryKey 查询管理工具 | SimFantasy</title><meta name=author content="Simz"><meta name=description content="在使用react-query做了几个项目以后，就感觉react-query中的查询和请求状态管理非常方便。但逐渐发现对react-query的使用需求在逐步发生变化：
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Query Key Factory - React Query 的 QueryKey 查询管理工具 | SimFantasy</title>
+<meta name=author content="Simz"><meta name=description content="在使用react-query做了几个项目以后，就感觉react-query中的查询和请求状态管理非常方便。但逐渐发现对react-query的使用需求在逐步发生变化：
 
 基本需求就是对异步数据获取的状态进行管理。
 获取到数据，react-query对数据进行缓存后，需要对缓存数据进行管理。
@@ -13,15 +14,15 @@
 基本需求就是对异步数据获取的状态进行管理。
 获取到数据，react-query对数据进行缓存后，需要对缓存数据进行管理。
 当需要进行数据交互通过useMutation获取到新的数据时，就需要通过之前查询数据的useQuery的queryKey修改缓存数据，通过query client中的setQueryData来修改缓存，或者使用invalidateQueries来使对应查询的queryKey让缓存失效来重新获取数据，最终就变成对queryKey的管理。
-"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-query-key-factory/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-05-18T17:47:04+00:00"><meta property="article:modified_time" content="2023-05-18T17:47:04+00:00"><meta property="og:see_also" content="http://localhost/posts/react-query%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
-<link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react-query-key-factory/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-05-18T17:47:04+00:00"><meta property="article:modified_time" content="2023-05-18T17:47:04+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span></button>
-<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Query Key Factory - React Query 的 QueryKey 查询管理工具</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-05-18</div><div class=meta-item><i class="fa fa-tag"></i>
-<a href=/tags/react/ title=react>react</a>
-<a href=/tags/react-query/ title=react-query>react-query</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=http://localhost/>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Query Key Factory - React Query 的 QueryKey 查询管理工具</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-05-18</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/react/ title=React>React</a>
+<a href=/tags/react-query/ title=React-Query>React-Query</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><p>在使用<code>react-query</code>做了几个项目以后，就感觉<code>react-query</code>中的查询和请求状态管理非常方便。但逐渐发现对<code>react-query</code>的使用需求在逐步发生变化：</p><ol><li>基本需求就是对异步数据获取的状态进行管理。</li><li>获取到数据，<code>react-query</code>对数据进行缓存后，需要对缓存数据进行管理。</li><li>当需要进行数据交互通过<code>useMutation</code>获取到新的数据时，就需要通过之前查询数据的<code>useQuery</code>的<code>queryKey</code>修改缓存数据，通过<code>query client</code>中的<code>setQueryData</code>来修改缓存，或者使用<code>invalidateQueries</code>来使对应查询的<code>queryKey</code>让缓存失效来重新获取数据，最终就变成对<code>queryKey</code>的管理。</li></ol><p>最近在做的<code>real world</code>练手项目中就碰到很多这种交互产生的问题，项目类似于<code>Medium</code>的一个多人博客，可以查看、发布文章、收藏文章、关注博主、对文章发布评论等，使用<code>react-query</code>来做API请求是非常简单的，但是在列表中点击收藏文章按钮，来收藏文章，在文章详情点击收藏按钮来收藏文章、关注博主。在文章详情中，对文章进行评论，这样就会产生大量的交互操作，需要在发起新的请求后修改之前的查询数据缓存或使之前的缓存失效，让新的数据生效。</p><p>这样我在第一个版本中，使用了一个<code>valtio</code>的<code>store</code>对当前请求的<code>queryKey</code>进行管理，如果在加载到当前页面有请求发生，则会通过<code>setKey</code>将当前请求的<code>queryKey</code>放到<code>store</code>中，如果当前页面有交互发生，需要使用<code>invalidateQueries</code>来使当前页面的缓存失效，就可以在<code>useMutation</code>时，通过<code>getKey</code>来获取当前请求的<code>queryKey</code>，从而来更新数据。</p><p>这样能在一定层面上解决<code>queryKey</code>的问题，但也存在几个问题：</p><ol><li>写法上就很繁琐，每次<code>useMutation</code>都需要先从<code>store</code>中获取下<code>key</code>。</li><li>从<code>store</code>中获取的<code>key</code>也是有局限性的。无法使用多个<code>invalidateQueries</code>来让多个位置的请求缓存失效，仅限当前页面。如果是在列表1中收藏的文章，列表2中的相同文章的收藏按钮不一定更新了这个状态，跟<code>react-query</code>的缓存时效和机制有关。</li></ol><p>基于上面的问题到<code>react-query</code>的官方找了下，看下又没有类似的解决办法，果然官方有推荐两个类似的包<code>Query Key Factory</code>和<code>React Query Kit</code>。<code>React Query Kit</code>比较偏向对<code>queryKey</code>和<code>queryFn</code>做集中管理，还有中文版的说明，应该是国人开发的，但跟我的需求关联不大，后面项目在好好研究下吧。<code>Query Key Factory</code>更加能满足我对<code>queryKey</code>的管理需求，所以采用了<code>Query Key Factory</code>。</p><h3 id=query-key-factory的安装和使用说明>Query Key Factory的安装和使用说明<a class=anchorjs-link href=#query-key-factory%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e></a></h3><p><code>Query Key Factory</code>包的功能说明：</p><ol><li>@tanstack/query 的类型安全查询密钥管理，具有自动完成功能。</li><li>专注于编写和使查询无效而无需记住的麻烦</li><li>您如何为特定查询设置密钥！ 这个库会处理剩下的事情。</li></ol><p>安装：</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span>pnpm add @lukemorales/query-key-factory
 </span></span></code></pre></div><p>以我做的<code>real world</code>第2个版本内容结合官方的例子来做使用说明：</p><h4 id=定义querykeyqueryfn>定义queryKey、queryFn<a class=anchorjs-link href=#%e5%ae%9a%e4%b9%89querykeyqueryfn></a></h4><ol><li><p>对<code>queryKey</code>的定义，官方给了两种方式：</p><ol><li><p>使用<code>createQueryKeyStore</code>将所有的<code>queryKey</code>都放到一起来定义。官方示例：</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-jsx data-lang=jsx><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span><span style=color:#8839ef>import</span> { createQueryKeyStore } from <span style=color:#40a02b>&#34;@lukemorales/query-key-factory&#34;</span>;
@@ -306,49 +307,43 @@ visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
-<a href=/tags/auth0/>auth0</a>
-<a href=/tags/chakraui/>chakraui</a>
-<a href=/tags/css/>css</a>
-<a href=/tags/egg/>egg</a>
-<a href=/tags/electron/>electron</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>Api</a>
+<a href=/tags/auth0/>Auth0</a>
+<a href=/tags/chakraui/>Chakraui</a>
+<a href=/tags/css/>Css</a>
+<a href=/tags/egg/>Egg</a>
+<a href=/tags/electron/>Electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
-<a href=/tags/elementui/>elementui</a>
-<a href=/tags/elint/>elint</a>
-<a href=/tags/eslint/>eslint</a>
-<a href=/tags/express/>express</a>
-<a href=/tags/firebase/>firebase</a>
-<a href=/tags/formik/>formik</a>
-<a href=/tags/git/>git</a>
-<a href=/tags/graphql/>graphQL</a>
-<a href=/tags/hexo/>hexo</a>
-<a href=/tags/icon/>icon</a>
-<a href=/tags/javascript/>javascript</a>
-<a href=/tags/koa/>koa</a>
-<a href=/tags/mongoddb/>mongoddb</a>
-<a href=/tags/nextjs/>nextjs</a>
-<a href=/tags/node/>node</a>
-<a href=/tags/pinia/>pinia</a>
-<a href=/tags/prettier/>prettier</a>
-<a href=/tags/prisma/>prisma</a>
-<a href=/tags/react/>react</a>
-<a href=/tags/react-query/>react-query</a>
-<a href=/tags/react-router/>react-router</a>
-<a href=/tags/redux-toolkit/>redux-toolkit</a>
-<a href=/tags/sequelize/>sequelize</a>
-<a href=/tags/strapi/>strapi</a>
-<a href=/tags/styled-components/>styled-components</a>
-<a href=/tags/typescript/>typescript</a>
-<a href=/tags/valtio/>valtio</a>
-<a href=/tags/vite/>vite</a>
-<a href=/tags/vscode/>vscode</a>
-<a href=/tags/vue/>vue</a>
-<a href=/tags/vuex/>vuex</a>
-<a href=/tags/zustand/>zustand</a>
-<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
-<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
-<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
-<script src=/js/simple-jekyll-search.min.js></script>
-<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
-<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
-<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
+<a href=/tags/elementui/>Elementui</a>
+<a href=/tags/elint/>Elint</a>
+<a href=/tags/eslint/>Eslint</a>
+<a href=/tags/express/>Express</a>
+<a href=/tags/firebase/>Firebase</a>
+<a href=/tags/formik/>Formik</a>
+<a href=/tags/git/>Git</a>
+<a href=/tags/graphql/>GraphQL</a>
+<a href=/tags/hexo/>Hexo</a>
+<a href=/tags/icon/>Icon</a>
+<a href=/tags/javascript/>Javascript</a>
+<a href=/tags/koa/>Koa</a>
+<a href=/tags/mongoddb/>Mongoddb</a>
+<a href=/tags/nextjs/>Nextjs</a>
+<a href=/tags/node/>Node</a>
+<a href=/tags/pinia/>Pinia</a>
+<a href=/tags/prettier/>Prettier</a>
+<a href=/tags/prisma/>Prisma</a>
+<a href=/tags/react/>React</a>
+<a href=/tags/react-query/>React-Query</a>
+<a href=/tags/react-router/>React-Router</a>
+<a href=/tags/redux-toolkit/>Redux-Toolkit</a>
+<a href=/tags/sequelize/>Sequelize</a>
+<a href=/tags/strapi/>Strapi</a>
+<a href=/tags/styled-components/>Styled-Components</a>
+<a href=/tags/typescript/>Typescript</a>
+<a href=/tags/valtio/>Valtio</a>
+<a href=/tags/vite/>Vite</a>
+<a href=/tags/vscode/>Vscode</a>
+<a href=/tags/vue/>Vue</a>
+<a href=/tags/vuex/>Vuex</a>
+<a href=/tags/zustand/>Zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>

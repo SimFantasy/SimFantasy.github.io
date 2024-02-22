@@ -1,12 +1,13 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Auth0身份验证 | SimFantasy</title><meta name=author content="Simz"><meta name=description content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Auth0身份验证"><meta name=twitter:description content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta property="og:title" content="Auth0身份验证"><meta property="og:description" content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/auth0%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-10-27T11:38:14+00:00"><meta property="article:modified_time" content="2022-10-27T11:38:14+00:00"><meta property="og:see_also" content="http://localhost/posts/react%E7%8A%B6%E6%80%81%E6%A8%AA%E8%AF%84/"><meta property="og:see_also" content="http://localhost/posts/react-route-6-4%E5%8A%9F%E8%83%BD/"><meta property="og:see_also" content="http://localhost/posts/chakraui-%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2/"><meta property="og:see_also" content="http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bauth%E5%92%8Cstorage/"><meta property="og:see_also" content="http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bfirestore/"><meta property="og:see_also" content="http://localhost/posts/styled-components%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
-<link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Auth0身份验证 | SimFantasy</title>
+<meta name=author content="Simz"><meta name=description content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Auth0身份验证"><meta name=twitter:description content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta property="og:title" content="Auth0身份验证"><meta property="og:description" content="Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/auth0%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-10-27T11:38:14+00:00"><meta property="article:modified_time" content="2022-10-27T11:38:14+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span></button>
-<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Auth0身份验证</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2022-10-27</div><div class=meta-item><i class="fa fa-tag"></i>
-<a href=/tags/react/ title=react>react</a>
-<a href=/tags/auth0/ title=auth0>auth0</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=http://localhost/>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Auth0身份验证</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2022-10-27</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/react/ title=React>React</a>
+<a href=/tags/auth0/ title=Auth0>Auth0</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><p>Auth0是一个第三方身份验证的工具。通过配置可以调用Auth0的注册、登录，配置指定回调地址就可以很快实现身份验证的功能。</p><p>‍</p><h3 id=注册设置auth0>注册、设置Auth0<a class=anchorjs-link href=#%e6%b3%a8%e5%86%8c%e8%ae%be%e7%bd%aeauth0></a></h3><ol><li><p>基础部分很简单，首先到<a href=https://auth0.com/ target=_blank>Auth0</a>注册一个账号，直接用Github或者Google的账号就可以直接登录。</p></li><li><p>然后在进入到Dashboard以后在左侧栏找到<code>Application</code>应用模块下的应用列表。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/21432eef5e16a86ab0ba753884f0d736/image.png data-action=zoom alt title=Application class=lazyload></a><figcaption class=image-caption>Application</figcaption></figure>​</p></li><li><p>然后添加应用。添加应用的名字，选择使用的应用类型，根据下面的说明 我们选择第二个单页网页应用。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/6e889d81038b1d52331f1215b8f4b0f4/image.png data-action=zoom alt title="create application" class=lazyload></a><figcaption class=image-caption>create application</figcaption></figure></p></li><li><p>添加成功后，在应用面板中第二个标签页<code>settings</code>中可以看到<code>Auth0</code>的基础信息，包含域名<code>Domain</code>和客户ID<code>Client ID</code>，这两个是需要在项目中添加登录时配置的。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/3030f810c18425a440bd25b7c89d6fcc/image.png data-action=zoom alt title=基础信息 class=lazyload></a><figcaption class=image-caption>基础信息</figcaption></figure></p></li><li><p>然后往下，在<code>Application URIs</code>中可以看到应用登录的登录端点、回调链接、注销网址等，我们在这里配置下允许的回调网址<code>Allowed Callback URLs</code>和运行注销网址。因为会用到vite和next端口不一致，可以使用英文逗号进行分割。填写完成保存修改。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/13e8f96ba0e03fc335a3f37557a98944/image.png data-action=zoom alt title=应用端点 class=lazyload></a><figcaption class=image-caption>应用端点</figcaption></figure></p></li><li><p>然后在上面第四个标签页连接<code>Connections</code>中可以看到可以使用的链接方式，和已经添加的第三方链接信息。这里可以控制连接源。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/9ebe884914d6c5b3fcddbece7f8c94b9/image.png data-action=zoom alt title=连接 class=lazyload></a><figcaption class=image-caption>连接</figcaption></figure></p></li><li><p>在左侧的菜单栏中第四个模块认证<code>Authentication</code>中第一个是配置默认登录，一般为使用邮箱登录。第二个是社交<code>Social</code>，可以选择第三方的登录，里面的内容很多可以仔细研究下。</p><p><figure><a class=paragraph-image><img data-src=https://p.sda1.dev/8/07b4ca17bbbf7016eb880c2bc98742f6/image.png data-action=zoom alt title=添加认证 class=lazyload></a><figcaption class=image-caption>添加认证</figcaption></figure></p></li><li><p>这里添加好第三方社交的连接，需要到应用中开启下，否则默认是关闭的。</p></li></ol><p>‍</p><h3 id=项目使用>项目使用<a class=anchorjs-link href=#%e9%a1%b9%e7%9b%ae%e4%bd%bf%e7%94%a8></a></h3><h4 id=安装>安装<a class=anchorjs-link href=#%e5%ae%89%e8%a3%85></a></h4><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span> pnpm add <span style=color:#d20f39>@</span>auth0<span style=color:#04a5e5;font-weight:700>/</span>auth0<span style=color:#04a5e5;font-weight:700>-</span>react
 </span></span></code></pre></div><p>以下以<code>vite</code>项目为例。</p><p>‍</p><h4 id=main>Main<a class=anchorjs-link href=#main></a></h4><p>安装好后在入口文件中配置Auth0的<code>Provider</code>。但首先我们把之前的Domain和Client ID配置到<code>.env</code>文件中。在入口文件中进行引用。</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1"> 1</span><span><span style=color:#9ca0b0;font-style:italic>// src/main.js
@@ -112,49 +113,43 @@ visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
-<a href=/tags/auth0/>auth0</a>
-<a href=/tags/chakraui/>chakraui</a>
-<a href=/tags/css/>css</a>
-<a href=/tags/egg/>egg</a>
-<a href=/tags/electron/>electron</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>Api</a>
+<a href=/tags/auth0/>Auth0</a>
+<a href=/tags/chakraui/>Chakraui</a>
+<a href=/tags/css/>Css</a>
+<a href=/tags/egg/>Egg</a>
+<a href=/tags/electron/>Electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
-<a href=/tags/elementui/>elementui</a>
-<a href=/tags/elint/>elint</a>
-<a href=/tags/eslint/>eslint</a>
-<a href=/tags/express/>express</a>
-<a href=/tags/firebase/>firebase</a>
-<a href=/tags/formik/>formik</a>
-<a href=/tags/git/>git</a>
-<a href=/tags/graphql/>graphQL</a>
-<a href=/tags/hexo/>hexo</a>
-<a href=/tags/icon/>icon</a>
-<a href=/tags/javascript/>javascript</a>
-<a href=/tags/koa/>koa</a>
-<a href=/tags/mongoddb/>mongoddb</a>
-<a href=/tags/nextjs/>nextjs</a>
-<a href=/tags/node/>node</a>
-<a href=/tags/pinia/>pinia</a>
-<a href=/tags/prettier/>prettier</a>
-<a href=/tags/prisma/>prisma</a>
-<a href=/tags/react/>react</a>
-<a href=/tags/react-query/>react-query</a>
-<a href=/tags/react-router/>react-router</a>
-<a href=/tags/redux-toolkit/>redux-toolkit</a>
-<a href=/tags/sequelize/>sequelize</a>
-<a href=/tags/strapi/>strapi</a>
-<a href=/tags/styled-components/>styled-components</a>
-<a href=/tags/typescript/>typescript</a>
-<a href=/tags/valtio/>valtio</a>
-<a href=/tags/vite/>vite</a>
-<a href=/tags/vscode/>vscode</a>
-<a href=/tags/vue/>vue</a>
-<a href=/tags/vuex/>vuex</a>
-<a href=/tags/zustand/>zustand</a>
-<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
-<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
-<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
-<script src=/js/simple-jekyll-search.min.js></script>
-<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
-<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
-<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
+<a href=/tags/elementui/>Elementui</a>
+<a href=/tags/elint/>Elint</a>
+<a href=/tags/eslint/>Eslint</a>
+<a href=/tags/express/>Express</a>
+<a href=/tags/firebase/>Firebase</a>
+<a href=/tags/formik/>Formik</a>
+<a href=/tags/git/>Git</a>
+<a href=/tags/graphql/>GraphQL</a>
+<a href=/tags/hexo/>Hexo</a>
+<a href=/tags/icon/>Icon</a>
+<a href=/tags/javascript/>Javascript</a>
+<a href=/tags/koa/>Koa</a>
+<a href=/tags/mongoddb/>Mongoddb</a>
+<a href=/tags/nextjs/>Nextjs</a>
+<a href=/tags/node/>Node</a>
+<a href=/tags/pinia/>Pinia</a>
+<a href=/tags/prettier/>Prettier</a>
+<a href=/tags/prisma/>Prisma</a>
+<a href=/tags/react/>React</a>
+<a href=/tags/react-query/>React-Query</a>
+<a href=/tags/react-router/>React-Router</a>
+<a href=/tags/redux-toolkit/>Redux-Toolkit</a>
+<a href=/tags/sequelize/>Sequelize</a>
+<a href=/tags/strapi/>Strapi</a>
+<a href=/tags/styled-components/>Styled-Components</a>
+<a href=/tags/typescript/>Typescript</a>
+<a href=/tags/valtio/>Valtio</a>
+<a href=/tags/vite/>Vite</a>
+<a href=/tags/vscode/>Vscode</a>
+<a href=/tags/vue/>Vue</a>
+<a href=/tags/vuex/>Vuex</a>
+<a href=/tags/zustand/>Zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>

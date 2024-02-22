@@ -6,9 +6,10 @@
 &lt;p>实现方式：通过三个文件来写本地计数&lt;code>store/modules/counter.js&lt;/code>，异步获取数据&lt;code>store/modules/post.js&lt;/code>，异步数据传参&lt;code>store/modules/user.js&lt;/code>。通过&lt;code>store/index.js&lt;/code>来对多个状态进行统一管理导出。&lt;/p>
 &lt;p>最终实现效果：&lt;/p>
 &lt;p>&lt;figure>
-&lt;a class="paragraph-image">
-&lt;img data-src="https://p.sda1.dev/12/9ee1d5dc474cec7a6c675ada29674278/image.png" data-action="zoom" alt="最终效果" class="lazyload">
-&lt;/a>
+ &lt;a class="paragraph-image">
+ &lt;img data-src="https://p.sda1.dev/12/9ee1d5dc474cec7a6c675ada29674278/image.png" data-action="zoom" alt="最终效果" class="lazyload">
+ &lt;/a>
+ 
 &lt;/figure>&lt;/p></description></item><item><title>React Route 6.4功能</title><link>http://localhost/posts/react-route-6-4%E5%8A%9F%E8%83%BD/</link><pubDate>Thu, 02 Feb 2023 18:23:37 +0000</pubDate><guid>http://localhost/posts/react-route-6-4%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>React Route 最近更新到了6.8，在6.4的版本中增加了一些新功能。应该是借鉴了remix的一些功能吧，毕竟是一个系统的产品。开发中的内卷逐渐在产品中体现了出来。&lt;/p></description></item><item><title>ChakraUI 暗黑模式切换</title><link>http://localhost/posts/chakraui-%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2/</link><pubDate>Sat, 03 Dec 2022 14:30:33 +0000</pubDate><guid>http://localhost/posts/chakraui-%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2/</guid><description>&lt;p>使用ChakraUI可以快速切换暗黑模式。并且可以用来做主题切换，提供了一系列的钩子和函数使用起来非常方便。&lt;/p></description></item><item><title>Firebase学习笔记之Auth和storage</title><link>http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bauth%E5%92%8Cstorage/</link><pubDate>Thu, 10 Nov 2022 16:33:22 +0000</pubDate><guid>http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bauth%E5%92%8Cstorage/</guid><description>这里主要记录下Auth这块的使用。功能上基本同之前的NextAuth差不多。但是 Firebase 并不是一个单一的权限系统，和数据等很多功能整合在一起了，所</description></item><item><title>Firebase学习笔记之Firestore</title><link>http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bfirestore/</link><pubDate>Thu, 10 Nov 2022 16:32:52 +0000</pubDate><guid>http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bfirestore/</guid><description>&lt;p>&lt;code>Firebase&lt;/code>是&lt;code>Google&lt;/code>的一个线上数据服务，提供在线的数据库和权限、资源存储等。这次一起来学习一下。&lt;/p>
 &lt;p>教程可以参考 The Net Ninja 大神的&lt;a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb" target="_blank">Firebase 9 Tutorial&lt;/a>&lt;/p>
 &lt;p>因为&lt;code>Firebase&lt;/code>的内容太多，我们分了两个部分。这个部分是数据的&lt;code>CURD&lt;/code>。&lt;/p>

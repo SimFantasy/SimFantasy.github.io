@@ -1,12 +1,13 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Node 14 Mongodb | SimFantasy</title><meta name=author content="Simz"><meta name=description content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Node 14 Mongodb"><meta name=twitter:description content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta property="og:title" content="Node 14 Mongodb"><meta property="og:description" content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/node-mongodb/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-08T23:36:15+08:00"><meta property="article:modified_time" content="2023-10-08T23:36:15+08:00"><meta property="og:see_also" content="http://localhost/posts/node-egg/"><meta property="og:see_also" content="http://localhost/posts/node-mongoose/"><meta property="og:see_also" content="http://localhost/posts/node-log/"><meta property="og:see_also" content="http://localhost/posts/node-validator/"><meta property="og:see_also" content="http://localhost/posts/node-prisma/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script>
-<link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Node 14 Mongodb | SimFantasy</title>
+<meta name=author content="Simz"><meta name=description content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Node 14 Mongodb"><meta name=twitter:description content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta property="og:title" content="Node 14 Mongodb"><meta property="og:description" content="MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 NoSql 数据库。他支持的数据结构非常松散，是类似 json 的 bson 语法，因此可以存储比较复杂的数据类型。Mongodb 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/node-mongodb/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-08T23:36:15+08:00"><meta property="article:modified_time" content="2023-10-08T23:36:15+08:00"><meta property="og:see_also" content="http://localhost/posts/node-egg/"><meta property="og:see_also" content="http://localhost/posts/node-mongoose/"><meta property="og:see_also" content="http://localhost/posts/node-log/"><meta property="og:see_also" content="http://localhost/posts/node-validator/"><meta property="og:see_also" content="http://localhost/posts/node-prisma/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
-<span class=icon-bar></span></button>
-<a class=navbar-brand href=http://localhost>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Node 14 Mongodb</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-10-08</div><div class=meta-item><i class="fa fa-tag"></i>
-<a href=/tags/node/ title=node>node</a>
-<a href=/tags/mongoddb/ title=mongoddb>mongoddb</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=http://localhost/>SimFantasy</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/ title=Home>Home</a></li><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Note>Note</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><h1>Node 14 Mongodb</h1><h2 class=subheading></h2><span class=meta><div class=meta-item><i class="far fa-user-circle"></i> Simz</div><div class=meta-item><i class="far fa-calendar"></i> 2023-10-08</div><div class=meta-item><i class="fa fa-tag"></i>
+<a href=/tags/node/ title=Node>Node</a>
+<a href=/tags/mongoddb/ title=Mongoddb>Mongoddb</a></div></span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
 post-container"><p><code>MongoDB</code> 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的 <code>NoSql</code> 数据库。他支持的数据结构非常松散，是类似 <code>json</code> 的 <code>bson</code> 语法，因此可以存储比较复杂的数据类型。<code>Mongodb</code> 最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。它的特点是高性能、易部署、易使用，存储数据非常方便。</p><h3 id=在docker中安装>在Docker中安装<a class=anchorjs-link href=#%e5%9c%a8docker%e4%b8%ad%e5%ae%89%e8%a3%85></a></h3><p>找一个合适的镜像直接拉取镜像后，执行命令</p><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span>docker run --name sim-mongo -p 27017:27017 -v /o/studylang/Docker/MongoDb/mongo-data:/data/db -d mongo:6.0.9-rc1
 </span></span></code></pre></div><p><code>--name sim-mongo</code>：表示数据服务的名称</p><p><code>-p 27017:27017</code>：映射的端口号</p><p><code>-v /o/studylang/Docker/MongoDb/mongo-data:/data/db</code>：volume映射到本地磁盘上的位置。将<code>docker</code>中<code>data/db</code>数据目录映射到<code>o:/studylang/Docker/MongDb/mongo-data</code>目录上。</p><p><code>mongo:6.0.9-rc1</code>的版本号</p><h4 id=在终端操作mongodb>在终端操作MongoDB<a class=anchorjs-link href=#%e5%9c%a8%e7%bb%88%e7%ab%af%e6%93%8d%e4%bd%9cmongodb></a></h4><div class=highlight><pre tabindex=0 style=color:#4c4f69;background-color:#eff1f5;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#8c8fa1">1</span><span>docker <span style=color:#04a5e5>exec</span> -it <span style=color:#04a5e5;font-weight:700>[</span>dockerId<span style=color:#04a5e5;font-weight:700>]</span> /bin/mongosh
@@ -309,49 +310,43 @@ visible-lg-block
 sidebar-container
 catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><h5><a class=catalog-toggle href=#>CATALOG</a></h5><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
 col-md-10 col-md-offset-1
-sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>api</a>
-<a href=/tags/auth0/>auth0</a>
-<a href=/tags/chakraui/>chakraui</a>
-<a href=/tags/css/>css</a>
-<a href=/tags/egg/>egg</a>
-<a href=/tags/electron/>electron</a>
+sidebar-container"><section><hr class="hidden-sm hidden-xs"><h5>FEATURED TAGS</h5><div class=tags><a href=/tags/api/>Api</a>
+<a href=/tags/auth0/>Auth0</a>
+<a href=/tags/chakraui/>Chakraui</a>
+<a href=/tags/css/>Css</a>
+<a href=/tags/egg/>Egg</a>
+<a href=/tags/electron/>Electron</a>
 <a href=/tags/elementplus/>ElementPlus</a>
-<a href=/tags/elementui/>elementui</a>
-<a href=/tags/elint/>elint</a>
-<a href=/tags/eslint/>eslint</a>
-<a href=/tags/express/>express</a>
-<a href=/tags/firebase/>firebase</a>
-<a href=/tags/formik/>formik</a>
-<a href=/tags/git/>git</a>
-<a href=/tags/graphql/>graphQL</a>
-<a href=/tags/hexo/>hexo</a>
-<a href=/tags/icon/>icon</a>
-<a href=/tags/javascript/>javascript</a>
-<a href=/tags/koa/>koa</a>
-<a href=/tags/mongoddb/>mongoddb</a>
-<a href=/tags/nextjs/>nextjs</a>
-<a href=/tags/node/>node</a>
-<a href=/tags/pinia/>pinia</a>
-<a href=/tags/prettier/>prettier</a>
-<a href=/tags/prisma/>prisma</a>
-<a href=/tags/react/>react</a>
-<a href=/tags/react-query/>react-query</a>
-<a href=/tags/react-router/>react-router</a>
-<a href=/tags/redux-toolkit/>redux-toolkit</a>
-<a href=/tags/sequelize/>sequelize</a>
-<a href=/tags/strapi/>strapi</a>
-<a href=/tags/styled-components/>styled-components</a>
-<a href=/tags/typescript/>typescript</a>
-<a href=/tags/valtio/>valtio</a>
-<a href=/tags/vite/>vite</a>
-<a href=/tags/vscode/>vscode</a>
-<a href=/tags/vue/>vue</a>
-<a href=/tags/vuex/>vuex</a>
-<a href=/tags/zustand/>zustand</a>
-<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2023<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script>
-<script src=/js/bootstrap.min.js crossorigin=anonymous></script>
-<script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script>
-<script src=/js/simple-jekyll-search.min.js></script>
-<script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script>
-<script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script>
-<script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
+<a href=/tags/elementui/>Elementui</a>
+<a href=/tags/elint/>Elint</a>
+<a href=/tags/eslint/>Eslint</a>
+<a href=/tags/express/>Express</a>
+<a href=/tags/firebase/>Firebase</a>
+<a href=/tags/formik/>Formik</a>
+<a href=/tags/git/>Git</a>
+<a href=/tags/graphql/>GraphQL</a>
+<a href=/tags/hexo/>Hexo</a>
+<a href=/tags/icon/>Icon</a>
+<a href=/tags/javascript/>Javascript</a>
+<a href=/tags/koa/>Koa</a>
+<a href=/tags/mongoddb/>Mongoddb</a>
+<a href=/tags/nextjs/>Nextjs</a>
+<a href=/tags/node/>Node</a>
+<a href=/tags/pinia/>Pinia</a>
+<a href=/tags/prettier/>Prettier</a>
+<a href=/tags/prisma/>Prisma</a>
+<a href=/tags/react/>React</a>
+<a href=/tags/react-query/>React-Query</a>
+<a href=/tags/react-router/>React-Router</a>
+<a href=/tags/redux-toolkit/>Redux-Toolkit</a>
+<a href=/tags/sequelize/>Sequelize</a>
+<a href=/tags/strapi/>Strapi</a>
+<a href=/tags/styled-components/>Styled-Components</a>
+<a href=/tags/typescript/>Typescript</a>
+<a href=/tags/valtio/>Valtio</a>
+<a href=/tags/vite/>Vite</a>
+<a href=/tags/vscode/>Vscode</a>
+<a href=/tags/vue/>Vue</a>
+<a href=/tags/vuex/>Vuex</a>
+<a href=/tags/zustand/>Zustand</a>
+<a href=/tags/%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/>避坑指南</a></div></section></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><ul class="list-inline text-center"></ul><p class="copyright text-muted">Copyright &copy; SimFantasy 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script src=/zoomjs/zoom.min.js></script></body></html>
