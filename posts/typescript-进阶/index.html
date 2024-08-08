@@ -9,27 +9,15 @@ TS带来了完整的类型系统，因此开发复杂程序时，无论接口数
 面向对象中有许多非常成熟的模式，能处理复杂问题
 在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。
 
-"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="TypeScript 进阶"><meta name=twitter:description content="面相对象
-
-TS为前端面向对象开发带来了契机
+"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="TypeScript 进阶"><meta name=twitter:description content="面相对象 TS为前端面向对象开发带来了契机
 JS语言没有类型检查，如果使用面向对象的方式开发，会产生大量的接口，而大量的接口会导致调用复杂度剧增，这种复杂度必须通过严格的类型检查来避免错误，尽管可以使用注释或文档或记忆力，但是它们没有强约束力。
 TS带来了完整的类型系统，因此开发复杂程序时，无论接口数量有多少，都可以获得完整的类型检查，并且这种检查是据有强约束力的。
-
-
 面向对象中有许多非常成熟的模式，能处理复杂问题
-在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。
-
-"><meta property="og:title" content="TypeScript 进阶"><meta property="og:description" content="面相对象
-
-TS为前端面向对象开发带来了契机
+在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。"><meta property="og:url" content="http://localhost/posts/typescript-%E8%BF%9B%E9%98%B6/"><meta property="og:site_name" content="SimFantasy"><meta property="og:title" content="TypeScript 进阶"><meta property="og:description" content="面相对象 TS为前端面向对象开发带来了契机
 JS语言没有类型检查，如果使用面向对象的方式开发，会产生大量的接口，而大量的接口会导致调用复杂度剧增，这种复杂度必须通过严格的类型检查来避免错误，尽管可以使用注释或文档或记忆力，但是它们没有强约束力。
 TS带来了完整的类型系统，因此开发复杂程序时，无论接口数量有多少，都可以获得完整的类型检查，并且这种检查是据有强约束力的。
-
-
 面向对象中有许多非常成熟的模式，能处理复杂问题
-在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。
-
-"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/typescript-%E8%BF%9B%E9%98%B6/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-05T00:29:00+00:00"><meta property="article:modified_time" content="2023-10-05T00:29:00+00:00"><meta property="og:see_also" content="http://localhost/posts/typescript-%E5%9F%BA%E7%A1%80/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+在过去的很多年中，在大型应用或复杂领域，面向对象已经积累了非常多的经验。"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-05T00:29:00+00:00"><meta property="article:modified_time" content="2023-10-05T00:29:00+00:00"><meta property="article:tag" content="Typescript"><meta property="og:see_also" content="http://localhost/posts/typescript-%E5%9F%BA%E7%A1%80/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>

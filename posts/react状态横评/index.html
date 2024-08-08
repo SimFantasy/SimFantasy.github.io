@@ -17,25 +17,13 @@
 所以对于这种时常会用到时常会用到但又不想去用的东西我们总是又爱又恨。好在React的生态是丰富的，总会有更多的好用的工具出现。
 下面我们来看下现在比较流行的RTK和Zustand，以及我比较喜欢的Valtio，通过一个相同的案例（多个状态统一管理、本地计数、异步数据、异步数据传参）对这三个状态库在功能层面上进行比较下，看下各自的优缺点。
 实现方式：通过三个文件来写本地计数store/modules/counter.js，异步获取数据store/modules/post.js，异步数据传参store/modules/user.js。通过store/index.js来对多个状态进行统一管理导出。
-最终实现效果：
-
-  
-    
-  
-  
-"><meta property="og:title" content="React状态横评"><meta property="og:description" content="从Redux说起吐槽：Redux是React绕不过的坑，一个据说不是React专属的状态库（现在大部分js框架都是全家桶的年代），大量模板代码，过于复杂的学习曲线，总让我们感到困扰。
+最终实现效果："><meta property="og:url" content="http://localhost/posts/react%E7%8A%B6%E6%80%81%E6%A8%AA%E8%AF%84/"><meta property="og:site_name" content="SimFantasy"><meta property="og:title" content="React状态横评"><meta property="og:description" content="从Redux说起吐槽：Redux是React绕不过的坑，一个据说不是React专属的状态库（现在大部分js框架都是全家桶的年代），大量模板代码，过于复杂的学习曲线，总让我们感到困扰。
 一个点击计数的state，在Redux中通常需要写store/index.js，store/reducer.js，store/actionCreator.js，store/constants.js四个文件，然后在全局通过Provider进行连接，在调用的页面还需要通过connect高阶进行包裹，然后通过props来映射，才能使用。
 异步操作还需要通过第三方redux-thunk或redux-saga来实现。
 所以对于这种时常会用到时常会用到但又不想去用的东西我们总是又爱又恨。好在React的生态是丰富的，总会有更多的好用的工具出现。
 下面我们来看下现在比较流行的RTK和Zustand，以及我比较喜欢的Valtio，通过一个相同的案例（多个状态统一管理、本地计数、异步数据、异步数据传参）对这三个状态库在功能层面上进行比较下，看下各自的优缺点。
 实现方式：通过三个文件来写本地计数store/modules/counter.js，异步获取数据store/modules/post.js，异步数据传参store/modules/user.js。通过store/index.js来对多个状态进行统一管理导出。
-最终实现效果：
-
-  
-    
-  
-  
-"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost/posts/react%E7%8A%B6%E6%80%81%E6%A8%AA%E8%AF%84/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-05T00:41:17+00:00"><meta property="article:modified_time" content="2023-10-05T00:41:17+00:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+最终实现效果："><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-10-05T00:41:17+00:00"><meta property="article:modified_time" content="2023-10-05T00:41:17+00:00"><meta property="article:tag" content="React"><meta property="article:tag" content="Redux-Toolkit"><meta property="article:tag" content="Zustand"><meta property="article:tag" content="Valtio"><meta property="og:see_also" content="http://localhost/posts/react-hooks/"><meta property="og:see_also" content="http://localhost/posts/zustand/"><meta property="og:see_also" content="http://localhost/posts/react-hook-form/"><meta property="og:see_also" content="http://localhost/posts/react-route-6-4%E5%8A%9F%E8%83%BD/"><meta property="og:see_also" content="http://localhost/posts/chakraui-%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2/"><meta property="og:see_also" content="http://localhost/posts/firebase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bauth%E5%92%8Cstorage/"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=123"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=123"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=123"><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
 <span class=sr-only>Toggle navigation</span>
 <span class=icon-bar></span>
 <span class=icon-bar></span>
